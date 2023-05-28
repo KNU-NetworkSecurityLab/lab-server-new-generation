@@ -12,4 +12,9 @@ public class MainController {
         model.addAttribute("item", "test");
         return "index";
     }
+
+    @GetMapping(value = "/member")
+    public String member() {
+        return "member";
+    }
 }

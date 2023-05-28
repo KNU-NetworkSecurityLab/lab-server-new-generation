@@ -1,0 +1,250 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <title>KNU NetworkSecurityLab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/member.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/title.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+</head>
+<body>
+<nav id="nav">
+    <div class="logo_div">
+        <img th:src="@{/images/logo_black.png}" class="logo_pic">
+    </div>
+    <ul>
+<!--        <li><a href="Home.html">HOME</a></li>-->
+        <li><a href="Home.html" th:href="@{/}">HOME</a></li>
+        <li><a href="Member.html">MEMBER</a></li>
+        <li><a href="Publication.html">PUBLICATION</a></li>
+        <li><a href="Notice.html">NOTICE</a></li>
+        <li><a href="Photo.html">PHOTO</a></li>
+        <li><a href="History.html">HISTORY</a></li>
+    </ul>
+</nav>
+<div id="contents">
+    <div id="section1">
+        <div class="image_cover"></div>
+        <div class="intro_content">
+            <p>미래를 향한 꿈, 세계를 향한 도전</p>
+            <div class="intro_main">
+                <img th:src="@{/images/lab_logo.png}" class="title_logo">
+                <p class="title_text">Network Security Lab</p>
+            </div>
+            <p>네트워크 보안 연구실에 오신 것을 환영합니다</p>
+        </div>
+    </div>
+    <div id="section2">
+        <div class="section2_content">
+            <div class="subtitle">
+                <p>구성원 소개</p>
+                <div class="bar"></div>
+            </div>
+            <!-- 교수님 -->
+            <div class="professor">
+                <div class="profile_photo"></div>
+                <table>
+                    <tr>
+                        <td><strong>김황래</strong></td>
+                        <td>교수</td>
+                    </tr>
+                    <tr>
+                        <td>전공</td>
+                        <td>컴퓨터 네트워크</td>
+                    </tr>
+                    <tr>
+                        <td>연구실</td>
+                        <td>8공 어딘가</td>
+                    </tr>
+                    <tr>
+                        <td>이메일</td>
+                        <td>0000@00000.com</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="student">
+                <div>
+                    <table>
+                        <tr>
+                            <td><strong>석우현</strong></td>
+                        </tr>
+                        <tr>
+                            <td>학부생</td>
+                        </tr>
+                        <tr>
+                            <td>컴퓨터 네트워크</td>
+                        </tr>
+                        <tr>
+                            <td>0000@00000.com</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div>
+                    <table>
+                        <tr>
+                            <td><strong>이도겸</strong></td>
+                        </tr>
+                        <tr>
+                            <td>학부생</td>
+                        </tr>
+                        <tr>
+                            <td>컴퓨터 네트워크</td>
+                        </tr>
+                        <tr>
+                            <td>0000@00000.com</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <td><strong>권호시</strong></td>
+                        </tr>
+                        <tr>
+                            <td>학부생</td>
+                        </tr>
+                        <tr>
+                            <td>컴퓨터 네트워크</td>
+                        </tr>
+                        <tr>
+                            <td>0000@00000.com</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <td><strong>전원우</strong></td>
+                        </tr>
+                        <tr>
+                            <td>학부생</td>
+                        </tr>
+                        <tr>
+                            <td>컴퓨터 네트워크</td>
+                        </tr>
+                        <tr>
+                            <td>0000@00000.com</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <td><strong>이태민</strong></td>
+                        </tr>
+                        <tr>
+                            <td>학부생</td>
+                        </tr>
+                        <tr>
+                            <td>컴퓨터 네트워크</td>
+                        </tr>
+                        <tr>
+                            <td>0000@00000.com</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <td><strong>김기범</strong></td>
+                        </tr>
+                        <tr>
+                            <td>학부생</td>
+                        </tr>
+                        <tr>
+                            <td>컴퓨터 네트워크</td>
+                        </tr>
+                        <tr>
+                            <td>0000@00000.com</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <td><strong>성한빈</strong></td>
+                        </tr>
+                        <tr>
+                            <td>학부생</td>
+                        </tr>
+                        <tr>
+                            <td>컴퓨터 네트워크</td>
+                        </tr>
+                        <tr>
+                            <td>0000@00000.com</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <td><strong>부승관</strong></td>
+                        </tr>
+                        <tr>
+                            <td>학부생</td>
+                        </tr>
+                        <tr>
+                            <td>컴퓨터 네트워크</td>
+                        </tr>
+                        <tr>
+                            <td>0000@00000.com</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <td><strong>윤정한</strong></td>
+                        </tr>
+                        <tr>
+                            <td>학부생</td>
+                        </tr>
+                        <tr>
+                            <td>컴퓨터 네트워크</td>
+                        </tr>
+                        <tr>
+                            <td>0000@00000.com</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <td><strong>김민규</strong></td>
+                        </tr>
+                        <tr>
+                            <td>학부생</td>
+                        </tr>
+                        <tr>
+                            <td>컴퓨터 네트워크</td>
+                        </tr>
+                        <tr>
+                            <td>0000@00000.com</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<footer>
+    <img th:src="@{/images/footer_logo.png}">
+    <p>
+        충청남도 천안시 부대동 천안대로 1223-24 (국립공주대학교), 제8공학관 915호<br>
+        7, Gwangol 1-gil, Gongju-si, Chungcheongnam-do, Republic of Korea<br>
+        NSL (Network Security Lab.) KNU
+    </p>
+</footer>
+</body>
+</html>
