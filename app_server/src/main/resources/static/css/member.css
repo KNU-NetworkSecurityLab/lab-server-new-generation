@@ -1,0 +1,78 @@
+/* 교수님 */
+.professor {
+    background-color: rgba(165, 165, 165, 0.2);
+    width: 100%;
+    height: 240px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin-bottom: 50px;
+}
+
+.profile_photo {
+    background-image: url(../images/student_photo2.jpg);
+    background-size: cover;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.professor table {
+    border-collapse: collapse;
+}
+
+.professor table td {
+    padding: 7px;
+    padding-right: 50px;
+    font-size: 18px;
+}
+
+.professor table td strong {
+    font-size: 28px;
+}
+
+.professor table tr:nth-child(1) td:nth-child(2) {
+    color: #676767;
+}
+
+.professor table tr:nth-child(n+2) td {
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+/* 학생 리스트 */
+.student {
+    display: grid;
+    row-gap: 35px;
+    column-gap: 35px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    margin-bottom: 150px;
+
+}
+
+.student div {
+    background-color: rgba(165, 165, 165, 0.2);
+    width: 100%;
+    height: 240px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    font-size: 18px;
+}
+
+.student div table td {
+    padding-bottom: 6px;
+}
+
+.student div table tr:nth-child(1) {
+    font-size: 28px;
+}
