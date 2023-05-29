@@ -17,8 +17,7 @@ public class MainController {
     private final MemberService memberService;
 
     @GetMapping(value = "/")
-    public String index(Model model) {
-        model.addAttribute("item", "test");
+    public String index() {
         return "index";
     }
 
@@ -26,5 +25,10 @@ public class MainController {
     public String member(Model model) {
         model.addAttribute("members", memberService.memberList());
         return "member";
+    }
+
+    @GetMapping(value = "/publication")
+    public String publication() {
+        return "publication";
     }
 }
