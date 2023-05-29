@@ -32,13 +32,35 @@
                 <p>논문 및 수상</p>
                 <div class="bar"></div>
             </div>
-            <!-- <footer>
-                <img src="/Resource/footer_logo.png">
-                <p>
-                    충청남도 천안시 부대동 천안대로 1223-24 (국립공주대학교), 제8공학관 915호<br>
-                    7, Gwangol 1-gil, Gongju-si, Chungcheongnam-do, Republic of Korea<br>
-                    NSL (Network Security Lab.) KNU
-                </p>
-            </footer> -->
+
+            <div th:each="thesis : ${theses}">
+                <table>
+                    <tr>
+                        <td><strong th:text="${thesis.title}"></strong></td>
+                    </tr>
+                    <tr>
+                        <td th:text="${thesis.journal}"></td>
+                    <tr>
+                        <td th:text="${thesis.prize}"></td>
+                    </tr>
+                </table>
+
+                <div th:each="author : ${thesis.authors}">
+                    <tr>
+                        <td th:text="${author.author.memberName}"></td>
+                    </tr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <footer>
+    <img src="/Resource/footer_logo.png">
+    <p>
+        충청남도 천안시 부대동 천안대로 1223-24 (국립공주대학교), 제8공학관 915호<br>
+        7, Gwangol 1-gil, Gongju-si, Chungcheongnam-do, Republic of Korea<br>
+        NSL (Network Security Lab.) KNU
+    </p>
+</footer> -->
 </body>
 </html>

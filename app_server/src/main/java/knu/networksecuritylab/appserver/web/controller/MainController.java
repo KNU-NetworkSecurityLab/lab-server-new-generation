@@ -1,6 +1,7 @@
 package knu.networksecuritylab.appserver.web.controller;
 
 import knu.networksecuritylab.appserver.web.service.MemberService;
+import knu.networksecuritylab.appserver.web.service.ThesisService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 
     private final MemberService memberService;
+    private final ThesisService thesisService;
 
     @GetMapping(value = "/")
     public String index() {
@@ -28,7 +30,8 @@ public class MainController {
     }
 
     @GetMapping(value = "/publication")
-    public String publication() {
+    public String publication(Model model) {
+        model.addAttribute("theses", thesisService.findAllTheses());
         return "publication";
     }
 }
