@@ -36,8 +36,7 @@ public class Member {
                 .memberName(memberRequestDto.getMemberName())
                 .email(memberRequestDto.getEmail())
                 .major(memberRequestDto.getMajor())
-//                .memberState(memberRequestDto.getMemberState())
-                .memberState(MemberState.STUDENT_NORMAL)
+                .memberState(memberRequestDto.getMemberState())
                 .build();
     }
 }

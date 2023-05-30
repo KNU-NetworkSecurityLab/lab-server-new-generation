@@ -22,11 +22,13 @@
     </div>
 
     <div>
-<!--        <label>멤버 상태</label>-->
-<!--        <div th:each="memberState : ${memberStates}">-->
-<!--            <input type="radio" id="memberState" name="memberState" th:value="${memberState}" class="form-control" placeholder="멤버 상태를 입력하세요">-->
-<!--            <label th:text="${memberState}"></label>-->
-<!--        </div>-->
+        <label>멤버 상태</label>
+        <div th:each="memberState : ${memberStates}">
+            <input type="radio" th:id="${memberState}" th:name="memberState" th:value="${memberState}"
+                   class="form-check-input">
+            <label th:for="${memberState}" class="form-check-label" th:text="${memberState.displayName}"></label>
+
+        </div>
     </div>
 
 

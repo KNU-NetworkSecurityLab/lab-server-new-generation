@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MemberController {
     private final MemberService memberService;
 
-//    @ModelAttribute("memberStates")
-//    public MemberState[] memberStates() {
-//        return MemberState.values();
-//    }
+    @ModelAttribute("memberStates")
+    public MemberState[] memberStates() {
+        return MemberState.values();
+    }
 
     @GetMapping
     public String member(Model model) {
