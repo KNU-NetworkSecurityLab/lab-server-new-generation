@@ -37,16 +37,16 @@
                 <div class="bar"></div>
             </div>
             <!-- 교수님 -->
-            <div class="professor">
+            <div class="professor" th:if="${professor != null}">
                 <div class="profile_photo"></div>
                 <table>
                     <tr>
-                        <td><strong>김황래</strong></td>
-                        <td>교수</td>
+                        <td th:text="${professor.memberName}"><strong>김황래</strong></td>
+                        <td th:text="${professor.memberState.getDisplayName()}">교수</td>
                     </tr>
                     <tr>
                         <td>전공</td>
-                        <td>컴퓨터 네트워크</td>
+                        <td th:text="${professor.major}">컴퓨터 네트워크</td>
                     </tr>
                     <tr>
                         <td>연구실</td>
@@ -54,7 +54,7 @@
                     </tr>
                     <tr>
                         <td>이메일</td>
-                        <td>0000@00000.com</td>
+                        <td th:text="${professor.email}">0000@00000.com</td>
                     </tr>
                 </table>
             </div>

@@ -1,6 +1,7 @@
 package knu.networksecuritylab.appserver.web.service.impl;
 
 import knu.networksecuritylab.appserver.web.entity.Member;
+import knu.networksecuritylab.appserver.web.entity.MemberState;
 import knu.networksecuritylab.appserver.web.entity.dto.MemberRequestDto;
 import knu.networksecuritylab.appserver.web.repository.MemberRepository;
 import knu.networksecuritylab.appserver.web.service.MemberService;
@@ -20,8 +21,13 @@ public class BasicMemberService implements MemberService {
     private final MemberRepository memberRepository;
 
     @Override
-    public List<Member> memberList() {
-        return memberRepository.findAll();
+    public List<Member> studentList() {
+        return memberRepository.findMemberByMemberStateNot(MemberState.PROFESSOR);
+    }
+
+    @Override
+    public Member getProfessor() {
+        return memberRepository.findMemberByMemberState(MemberState.PROFESSOR);
     }
 
     @Override
