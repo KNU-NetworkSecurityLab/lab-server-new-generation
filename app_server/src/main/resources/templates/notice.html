@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <title>KNU NetworkSecurityLab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/title.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+</head>
+<body>
+<div th:insert="~{navbar :: copy}"></div>
+<div id="contents">
+    <div id="section1">
+        <div class="image_cover"></div>
+        <div class="intro_content">
+            <p>미래를 향한 꿈, 세계를 향한 도전</p>
+            <div class="intro_main">
+                <img th:src="@{/images/lab_logo.png}" class="title_logo">
+                <p class="title_text">Network Security Lab</p>
+            </div>
+            <p>네트워크 보안 연구실에 오신 것을 환영합니다</p>
+        </div>
+    </div>
+    <div id="section2">
+        <div class="section2_content">
+            <div class="subtitle">
+                <p>공지사항</p>
+                <div class="bar"></div>
+            </div>
+            <!-- <footer>
+                <img src="/Resource/footer_logo.png">
+                <p>
+                    충청남도 천안시 부대동 천안대로 1223-24 (국립공주대학교), 제8공학관 915호<br>
+                    7, Gwangol 1-gil, Gongju-si, Chungcheongnam-do, Republic of Korea<br>
+                    NSL (Network Security Lab.) KNU
+                </p>
+            </footer> -->
+</body>
+</html>

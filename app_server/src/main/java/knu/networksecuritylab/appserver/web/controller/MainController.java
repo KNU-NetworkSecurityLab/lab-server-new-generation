@@ -34,4 +34,9 @@ public class MainController {
         model.addAttribute("theses", thesisService.findAllTheses());
         return "publication";
     }
+
+    @GetMapping(value = "/notice")
+    public String notice() {
+        return "notice";
+    }
 }

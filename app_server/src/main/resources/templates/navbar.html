@@ -3,14 +3,13 @@
 
 <nav id="nav" th:fragment="copy">
     <div class="logo_div">
-        <img th:src="@{/images/logo_black.png}" class="logo_pic">
+        <a th:href="@{/}"><img th:src="@{/images/logo_black.png}" class="logo_pic"></a>
     </div>
     <ul>
-        <!--        <li><a href="Home.html">HOME</a></li>-->
-        <li><a href="Home.html" th:href="@{/}">HOME</a></li>
-        <li><a href="Member.html" th:href="@{/member}">MEMBER</a></li>
+        <li><a href="index.html" th:href="@{/}">HOME</a></li>
+        <li><a href="member.html" th:href="@{/member}">MEMBER</a></li>
         <li><a href="publication.html" th:href="@{/publication}">PUBLICATION</a></li>
-        <li><a href="Notice.html">NOTICE</a></li>
+        <li><a href="notice.html" th:href="@{/notice}">NOTICE</a></li>
         <li><a href="Photo.html">PHOTO</a></li>
         <li><a href="History.html">HISTORY</a></li>
     </ul>
