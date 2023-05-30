@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" href="../static/css/bootstrap.min.css"/>
 </head>
 <body>
 
-<form action="member.html" th:action method="post">
+<form action="member.html" th:action method="post" class="needs-validation w-25 mx-auto mt-5" novalidate>
     <div>
-        <label for="memberName">이름</label>
+        <label for="memberName" class="form-label mx-auto">이름</label>
         <input type="text" id="memberName" name="memberName" class="form-control" placeholder="이름을 입력하세요">
     </div>
     <div>
-        <label for="email">이메일</label>
+        <label for="email" class="form-label mx-auto">이메일</label>
         <input type="text" id="email" name="email" class="form-control" placeholder="이메일을 입력하세요">
     </div>
 
     <div>
-        <label for="major">전공</label>
+        <label for="major" class="form-label mx-auto">전공</label>
         <input type="text" id="major" name="major" class="form-control" placeholder="전공을 입력하세요">
     </div>
 
     <div>
-        <label>멤버 상태</label>
+        <label class="form-label mx-auto">멤버 상태</label>
         <div th:each="memberState : ${memberStates}">
             <input type="radio" th:id="${memberState}" th:name="memberState" th:value="${memberState}"
                    class="form-check-input">
