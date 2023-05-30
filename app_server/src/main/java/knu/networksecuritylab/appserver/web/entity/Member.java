@@ -1,6 +1,8 @@
 package knu.networksecuritylab.appserver.web.entity;
 
+import knu.networksecuritylab.appserver.web.entity.dto.MemberRequestDto;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -20,4 +22,22 @@ public class Member {
     private String email;
     private String major; // 주 분야
     private MemberState memberState;
+
+    @Builder
+    public Member(String memberName, String email, String major, MemberState memberState) {
+        this.memberName = memberName;
+        this.email = email;
+        this.major = major;
+        this.memberState = memberState;
+    }
+
+    public static Member from(MemberRequestDto memberRequestDto) {
+        return Member.builder()
+                .memberName(memberRequestDto.getMemberName())
+                .email(memberRequestDto.getEmail())
+                .major(memberRequestDto.getMajor())
+//                .memberState(memberRequestDto.getMemberState())
+                .memberState(MemberState.STUDENT_NORMAL)
+                .build();
+    }
 }

@@ -1,6 +1,7 @@
 package knu.networksecuritylab.appserver.web.service.impl;
 
 import knu.networksecuritylab.appserver.web.entity.Member;
+import knu.networksecuritylab.appserver.web.entity.dto.MemberRequestDto;
 import knu.networksecuritylab.appserver.web.repository.MemberRepository;
 import knu.networksecuritylab.appserver.web.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -21,5 +22,12 @@ public class BasicMemberService implements MemberService {
     @Override
     public List<Member> memberList() {
         return memberRepository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public Long addMember(MemberRequestDto memberRequestDto) {
+        Member member = Member.from(memberRequestDto);
+        return memberRepository.save(member).getId();
     }
 }

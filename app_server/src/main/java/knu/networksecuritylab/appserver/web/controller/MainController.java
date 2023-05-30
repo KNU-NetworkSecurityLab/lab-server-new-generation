@@ -15,18 +15,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequiredArgsConstructor
 public class MainController {
 
-    private final MemberService memberService;
     private final ThesisService thesisService;
 
     @GetMapping(value = "/")
     public String index() {
         return "index";
-    }
-
-    @GetMapping(value = "/member")
-    public String member(Model model) {
-        model.addAttribute("members", memberService.memberList());
-        return "member";
     }
 
     @GetMapping(value = "/publication")
