@@ -1,6 +1,7 @@
 package knu.networksecuritylab.appserver.web.service.impl;
 
 import knu.networksecuritylab.appserver.web.entity.Thesis;
+import knu.networksecuritylab.appserver.web.entity.dto.ThesisRequestDto;
 import knu.networksecuritylab.appserver.web.repository.ThesisRepository;
 import knu.networksecuritylab.appserver.web.service.ThesisService;
 import lombok.RequiredArgsConstructor;
@@ -21,5 +22,10 @@ public class BasicThesisService implements ThesisService {
     @Override
     public List<Thesis> findAllTheses() {
         return thesisRepository.findAll();
+    }
+
+    @Override
+    public Long addThesis(ThesisRequestDto thesisRequestDto) {
+        return thesisRepository.save(thesisRepository.save(Thesis.from(thesisRequestDto))).getId();
     }
 }

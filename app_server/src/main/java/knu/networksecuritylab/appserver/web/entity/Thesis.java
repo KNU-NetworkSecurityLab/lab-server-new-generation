@@ -1,6 +1,8 @@
 package knu.networksecuritylab.appserver.web.entity;
 
 import knu.networksecuritylab.appserver.app.entity.book.BookTag;
+import knu.networksecuritylab.appserver.web.entity.dto.MemberRequestDto;
+import knu.networksecuritylab.appserver.web.entity.dto.ThesisRequestDto;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -35,5 +37,14 @@ public class Thesis {
         this.year = year;
         this.prize = prize;
         this.journal = journal;
+    }
+
+    public static Thesis from(ThesisRequestDto thesisRequestDto) {
+        return Thesis.builder()
+                .prize(thesisRequestDto.getPrize())
+                .journal(thesisRequestDto.getJournal())
+                .year(thesisRequestDto.getYear())
+                .title(thesisRequestDto.getTitle())
+                .build();
     }
 }

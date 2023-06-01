@@ -20,14 +20,13 @@ public class BasicMemberService implements MemberService {
     private final MemberRepository memberRepository;
 
     @Override
-    public List<Member> memberList() {
+    public List<Member> getAllMembers() {
         return memberRepository.findAll();
     }
 
     @Override
     @Transactional
     public Long addMember(MemberRequestDto memberRequestDto) {
-        Member member = Member.from(memberRequestDto);
-        return memberRepository.save(member).getId();
+        return memberRepository.save(Member.from(memberRequestDto)).getId();
     }
 }

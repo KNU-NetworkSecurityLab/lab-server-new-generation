@@ -1,6 +1,5 @@
 package knu.networksecuritylab.appserver.web.controller;
 
-import knu.networksecuritylab.appserver.web.service.MemberService;
 import knu.networksecuritylab.appserver.web.service.ThesisService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,12 +19,6 @@ public class MainController {
     @GetMapping(value = "/")
     public String index() {
         return "index";
-    }
-
-    @GetMapping(value = "/publication")
-    public String publication(Model model) {
-        model.addAttribute("theses", thesisService.findAllTheses());
-        return "publication";
     }
 
     @GetMapping(value = "/notice")
