@@ -28,7 +28,8 @@ public class MemberController {
 
     @GetMapping
     public String member(Model model) {
-        model.addAttribute("members", memberService.getAllMembers());
+        model.addAttribute("professor", memberService.getProfessor());
+        model.addAttribute("members", memberService.studentList());
         return "member";
     }
 

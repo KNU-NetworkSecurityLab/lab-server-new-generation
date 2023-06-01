@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface MemberService {
     List<Member> getAllMembers();
-
+    List<Member> studentList();
+    Member getProfessor();
     Long addMember(MemberRequestDto memberRequestDto);
 }

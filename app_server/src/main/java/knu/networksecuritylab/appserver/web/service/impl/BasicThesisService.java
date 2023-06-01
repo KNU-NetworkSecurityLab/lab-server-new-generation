@@ -24,6 +24,7 @@ public class BasicThesisService implements ThesisService {
         return thesisRepository.findAll();
     }
 
+    @Transactional
     @Override
     public Long addThesis(ThesisRequestDto thesisRequestDto) {
         return thesisRepository.save(thesisRepository.save(Thesis.from(thesisRequestDto))).getId();
