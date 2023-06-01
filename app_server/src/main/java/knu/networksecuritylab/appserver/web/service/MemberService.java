@@ -10,4 +10,6 @@ public interface MemberService {
     List<Member> studentList();
     Member getProfessor();
     Long addMember(MemberRequestDto memberRequestDto);
+
+    Member getMemberById(Long id);
 }

@@ -1,25 +1,18 @@
 package knu.networksecuritylab.appserver.web.controller;
 
 import knu.networksecuritylab.appserver.web.entity.Member;
-import knu.networksecuritylab.appserver.web.entity.MemberState;
-import knu.networksecuritylab.appserver.web.entity.dto.MemberRequestDto;
-import knu.networksecuritylab.appserver.web.entity.dto.ThesisRequestDto;
+import knu.networksecuritylab.appserver.web.entity.Thesis;
 import knu.networksecuritylab.appserver.web.service.MemberService;
 import knu.networksecuritylab.appserver.web.service.ThesisService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Slf4j
-@Validated
 @Controller
 @RequiredArgsConstructor
 @RequestMapping(value = "/thesis")
@@ -41,13 +34,14 @@ public class ThesisController {
     }
 
     @PostMapping(value = "/add")
-    public String memberAdd(ThesisRequestDto thesisRequestDto) {
-        thesisService.addThesis(thesisRequestDto);
+    public String memberAdd(@ModelAttribute Thesis thesis, @RequestParam("memberIds") List<Long> memberIds) {
+        thesisService.addThesis(thesis, memberIds);
         return "redirect:/thesis";
     }
 
     @GetMapping(value = "/add")
-    public String thesisAddForm() {
+    public String thesisAddForm(Model model) {
+        model.addAttribute("thesis", new Thesis());
         return "thesisRegister";
     }
 }

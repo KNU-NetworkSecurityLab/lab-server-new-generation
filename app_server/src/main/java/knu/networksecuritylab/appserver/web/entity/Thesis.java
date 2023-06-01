@@ -1,50 +1,57 @@
 package knu.networksecuritylab.appserver.web.entity;
 
 import knu.networksecuritylab.appserver.app.entity.book.BookTag;
-import knu.networksecuritylab.appserver.web.entity.dto.MemberRequestDto;
 import knu.networksecuritylab.appserver.web.entity.dto.ThesisRequestDto;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@ToString
+@NoArgsConstructor
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Data
 public class Thesis {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "thesis_id")
     private Long id;
 
-    @NotBlank(message = "이름은 비어있을 수 없습니다.")
     private String title;
     private Integer year;
-    private String prize; // 수상내역
-    private String journal; // 학회
+    private Integer month;
+    private String prizeTitle; // 수상 ex> 추계 대학생 논문 경진 대회
+    private String prizeGrade; // 수상등급 ex> 최우수상, 금상, 은상, 동상
+    private String organization; // ex > 한국정보기술학회, 공주대학교 창업지원센터
 
-    @OneToMany(mappedBy = "thesis")
-    private List<ThesisAuthor> authors = new ArrayList<>();
+    @OneToMany(mappedBy = "thesis", cascade = CascadeType.ALL)
+    private final List<ThesisMember> members = new ArrayList<>();
 
     @Builder
-    private Thesis(String title, Integer year, String prize, String journal) {
+    public Thesis(String title, Integer year, Integer month, String prizeTitle, String prizeGrade, String organization) {
         this.title = title;
         this.year = year;
-        this.prize = prize;
-        this.journal = journal;
+        this.month = month;
+        this.prizeTitle = prizeTitle;
+        this.prizeGrade = prizeGrade;
+        this.organization = organization;
     }
 
     public static Thesis from(ThesisRequestDto thesisRequestDto) {
         return Thesis.builder()
-                .prize(thesisRequestDto.getPrize())
-                .journal(thesisRequestDto.getJournal())
-                .year(thesisRequestDto.getYear())
                 .title(thesisRequestDto.getTitle())
+                .year(thesisRequestDto.getYear())
+                .month(thesisRequestDto.getMonth())
+                .prizeTitle(thesisRequestDto.getPrizeTitle())
+                .prizeGrade(thesisRequestDto.getPrizeGrade())
+                .organization(thesisRequestDto.getOrganization())
                 .build();
+    }
+
+    public void addMember(final Member member) {
+        this.members.add(ThesisMember.from(member, this));
     }
 }

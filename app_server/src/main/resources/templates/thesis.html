@@ -39,15 +39,18 @@
                         <td><strong th:text="${thesis.title}"></strong></td>
                     </tr>
                     <tr>
-                        <td th:text="${thesis.journal}"></td>
+                        <td th:text="${thesis.organization}"></td>
                     <tr>
-                        <td th:text="${thesis.prize}"></td>
+                        <td th:text="${thesis.prizeTitle}"></td>
+                    </tr>
+                    <tr>
+                        <td th:text="${thesis.prizeGrade}"></td>
                     </tr>
                 </table>
 
-                <div th:each="author : ${thesis.authors}">
+                <div th:each="member : ${thesis.members}">
                     <tr>
-                        <td th:text="${author.author.memberName}"></td>
+                        <td th:text="${member.memberName}"></td>
                     </tr>
                 </div>
             </div>

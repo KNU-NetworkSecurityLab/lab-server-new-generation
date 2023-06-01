@@ -8,5 +8,5 @@ import java.util.List;
 public interface ThesisService {
     List<Thesis> findAllTheses();
 
-    Long addThesis(ThesisRequestDto thesisRequestDto);
+    Long addThesis(Thesis thesis, List<Long> memberIds);
 }

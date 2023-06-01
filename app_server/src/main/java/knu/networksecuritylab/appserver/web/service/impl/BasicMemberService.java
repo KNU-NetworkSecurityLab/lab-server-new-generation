@@ -39,4 +39,9 @@ public class BasicMemberService implements MemberService {
     public Long addMember(MemberRequestDto memberRequestDto) {
         return memberRepository.save(Member.from(memberRequestDto)).getId();
     }
+
+    @Override
+    public Member getMemberById(Long id) {
+        return memberRepository.findById(id).orElseThrow();
+    }
 }

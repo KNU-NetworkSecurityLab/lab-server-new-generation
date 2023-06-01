@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ThesisAuthor {
+public class ThesisMember {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,15 +19,22 @@ public class ThesisAuthor {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
-    private Member author;
+    private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "thesis_id")
     private Thesis thesis;
 
     @Builder
-    private ThesisAuthor(Member member, Thesis thesis) {
-        this.author = member;
+    public ThesisMember(Member member, Thesis thesis) {
+        this.member = member;
         this.thesis = thesis;
+    }
+
+    public static ThesisMember from(Member member, Thesis thesis) {
+        return ThesisMember.builder()
+                .member(member)
+                .thesis(thesis)
+                .build();
     }
 }
