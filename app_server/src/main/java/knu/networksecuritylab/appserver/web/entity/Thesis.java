@@ -29,11 +29,11 @@ public class Thesis {
     @OneToMany(mappedBy = "thesis", cascade = CascadeType.ALL)
     private final List<ThesisMember> thesisMembers = new ArrayList<>();
 
-    @OneToOne(mappedBy = "thesis", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    private ThesisImage image;
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private WebImage image;
 
     @Builder
-    public Thesis(String title, Integer year, Integer month, String prizeTitle, String prizeGrade, String organization, ThesisImage image) {
+    public Thesis(String title, Integer year, Integer month, String prizeTitle, String prizeGrade, String organization, WebImage image) {
         this.title = title;
         this.year = year;
         this.month = month;
@@ -54,7 +54,7 @@ public class Thesis {
                 .build();
     }
 
-    public void setImage(ThesisImage image) {
+    public void setImage(WebImage image) {
         this.image = image;
     }
 

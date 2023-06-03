@@ -2,7 +2,7 @@ package knu.networksecuritylab.appserver.web.service.impl;
 
 import knu.networksecuritylab.appserver.web.entity.Member;
 import knu.networksecuritylab.appserver.web.entity.Thesis;
-import knu.networksecuritylab.appserver.web.entity.ThesisImage;
+import knu.networksecuritylab.appserver.web.entity.WebImage;
 import knu.networksecuritylab.appserver.web.repository.MemberRepository;
 import knu.networksecuritylab.appserver.web.repository.ThesisRepository;
 import knu.networksecuritylab.appserver.web.service.ThesisService;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -40,9 +39,8 @@ public class BasicThesisService implements ThesisService {
             thesis.addMember(member);
         });
 
-        ThesisImage thesisImage = thesisImageFileService.multipartFileStoreAndConvertToImage(multipartFile);
-        thesisImage.setThesis(thesis);
-        thesis.setImage(thesisImage);
+        WebImage webImage = thesisImageFileService.multipartFileStoreAndConvertToImage(multipartFile);
+        thesis.setImage(webImage);
 
         return thesisRepository.save(thesis).getId();
     }

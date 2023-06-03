@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ThesisImage {
+public class WebImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "thesis_image_id")
@@ -18,17 +18,10 @@ public class ThesisImage {
     private String imageName;
     private Long imageSize;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "thesis_id")
-    private Thesis thesis;
-
     @Builder
-    public ThesisImage(String imageName, Long imageSize) {
+    public WebImage(String imageName, Long imageSize) {
         this.imageName = imageName;
         this.imageSize = imageSize;
     }
 
-    public void setThesis(Thesis thesis) {
-        this.thesis = thesis;
-    }
 }

@@ -3,11 +3,10 @@ package knu.networksecuritylab.appserver.web.service.file;
 import knu.networksecuritylab.appserver.app.exception.file.impl.FileStorageException;
 import knu.networksecuritylab.appserver.app.exception.file.impl.ImageNotReadable;
 import knu.networksecuritylab.appserver.app.exception.file.impl.InvalidFileExtensionException;
-import knu.networksecuritylab.appserver.web.entity.ThesisImage;
+import knu.networksecuritylab.appserver.web.entity.WebImage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
@@ -17,8 +16,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -42,19 +39,19 @@ public class ThesisImageFileService implements ThesisFileService {
     }
 
     @Override
-    public ThesisImage multipartFileStoreAndConvertToImage(MultipartFile multipartFile)
+    public WebImage multipartFileStoreAndConvertToImage(MultipartFile multipartFile)
             throws IOException {
         String storedFileName = multipartFileStore(multipartFile);
         return convertToImage(multipartFile, storedFileName);
     }
 
-    private static ThesisImage convertToImage(MultipartFile multipartFile, String fileName) {
+    private static WebImage convertToImage(MultipartFile multipartFile, String fileName) {
         long fileSize = multipartFile.getSize();
-        ThesisImage thesisImage = ThesisImage.builder()
+        WebImage webImage = WebImage.builder()
                 .imageName(fileName)
                 .imageSize(fileSize)
                 .build();
-        return thesisImage;
+        return webImage;
     }
 
     private String multipartFileStore(MultipartFile multipartFile) throws IOException {
@@ -81,10 +78,10 @@ public class ThesisImageFileService implements ThesisFileService {
     }
 
     @Override
-    public byte[] imageConvertToBytes(ThesisImage thesisImage) {
+    public byte[] imageConvertToBytes(WebImage webImage) {
         try {
             FileInputStream fileInputStream =
-                    new FileInputStream(STORAGE_PATH + File.separator + thesisImage.getImageName());
+                    new FileInputStream(STORAGE_PATH + File.separator + webImage.getImageName());
             return fileInputStream.readAllBytes();
         } catch (IOException e) {
             throw new ImageNotReadable();
