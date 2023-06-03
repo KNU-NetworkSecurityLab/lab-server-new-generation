@@ -34,28 +34,20 @@
                 <div class="bar"></div>
             </div>
 
-            <div th:each="thesis : ${theses}">
-                <div th:if="${thesis.image != null}">
-                    <img th:src="@{'/thesis/image/' + ${thesis.image.imageName}}" class="thesis_image">
-                </div>
-                <table>
-                    <tr>
-                        <td><strong th:text="${thesis.title}"></strong></td>
-                    </tr>
-                    <tr>
-                        <td th:text="${thesis.organization}"></td>
-                    <tr>
-                        <td th:text="${thesis.prizeTitle}"></td>
-                    </tr>
-                    <tr>
-                        <td th:text="${thesis.prizeGrade}"></td>
-                    </tr>
-                </table>
+            <div th:each="thesis : ${theses}" class="thesis-container">
+                <img th:if="${thesis.image != null}" th:src="@{'/thesis/image/' + ${thesis.image.imageName}}"
+                     class="thesis-image">
 
-                <div th:each="thesisMember : ${thesis.getThesisMembers}">
-                    <tr>
-                        <td th:text="${thesisMember.member.memberName}"></td>
-                    </tr>
+                <div>
+                    <h4 th:text="${thesis.title} + ' (' + ${thesis.year} + '. ' + ${thesis.month} + ')'"
+                        class="thesis-title"></h4>
+                    <p th:text="'수상 - ' + ${thesis.prizeTitle} + '  '  + ${thesis.prizeGrade}" class="text"></p>
+                    <p th:text="'주최 - ' + ${thesis.organization}" class="text"></p>
+
+                    <span>참여자 - </span>
+                    <span th:each="thesisMember : ${thesis.getThesisMembers}">
+                        <span class="text" th:text="${thesisMember.member.memberName} + ' '"></span>
+                    </span>
                 </div>
             </div>
         </div>
