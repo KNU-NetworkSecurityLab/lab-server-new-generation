@@ -28,10 +28,21 @@ public class AuthenticationConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // jwt 이용 시 사용
                 .and()
                 .authorizeRequests()
+
                 // permitAll() -> 모두 허용     authenticated() -> 인증 필요     hasRole() -> 권한 필요
+                // rest api
                 .antMatchers("/api/v1/users/sign-up", "/api/v1/users/sign-in").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/v1/iot/**").permitAll()
                 .antMatchers("/api/v1/admin/**").hasRole("ADMIN")
+
+                // web
+                .antMatchers("/").permitAll()
+                .antMatchers("/member/**").permitAll()
+                .antMatchers("/thesis/**").permitAll()
+
+                // css, image 파일들은 모두 허용
+                .antMatchers("/css/**").permitAll()
+                .antMatchers("/images/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 // 권한을 확인하는 과정에서 통과하지 못하는 예외가 발생할 경우, 예외를 전달 -> CustomAccessDeniedHandler
