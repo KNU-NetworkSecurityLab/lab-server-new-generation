@@ -35,11 +35,6 @@ public class ThesisController {
         return memberService.getAllMembers();
     }
 
-    @ModelAttribute("imagePath")
-    public String imagePath() {
-        return uploadPath;
-    }
-
     @GetMapping
     public String publication(Model model) {
         model.addAttribute("theses", thesisService.findAllTheses());
@@ -65,7 +60,7 @@ public class ThesisController {
     @GetMapping("/image/{fileName:.+}")
     @ResponseBody
     public ResponseEntity<Resource> serveImage(@PathVariable String fileName) {
-        Resource file = new FileSystemResource("/Users/uknow/lab_service_images/" + fileName);
+        Resource file = new FileSystemResource(uploadPath + '/' + fileName);
 
         if (file.exists()) {
             return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg").body(file);
