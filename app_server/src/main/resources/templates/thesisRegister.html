@@ -8,7 +8,7 @@
 <body>
 
 <form action="thesis.html" th:action th:object="${thesis}" method="post" class="needs-validation w-25 mx-auto mt-5"
-      novalidate>
+      novalidate enctype="multipart/form-data">
     <div>
         <label for="title" class="form-label mx-auto">프로젝트명</label>
         <label for="title" class="form-label mx-auto">ex> 위치기반 코로나19 방역알림 시스템, 언리얼 VR 팬미팅 플랫폼</label>
@@ -49,7 +49,13 @@
             <!-- requestParam 으로 memberIds 로 체크된 값 전달 -->
             <input type="checkbox" th:id="${member.id}" th:name="memberIds" th:value="${member.id}"
                    class="form-check-input">
+            <label th:for="${member.id}" class="form-check-label" th:text="${member.memberName}">멤버 이름</label>
         </div>
+    </div>
+
+    <div>
+        <label>사진</label>
+        <input type="file" th:id="thesisImage" th:name="thesisImage" class="form-control">
     </div>
 
     <div>

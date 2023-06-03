@@ -2,14 +2,18 @@ package knu.networksecuritylab.appserver.web.service.impl;
 
 import knu.networksecuritylab.appserver.web.entity.Member;
 import knu.networksecuritylab.appserver.web.entity.Thesis;
+import knu.networksecuritylab.appserver.web.entity.ThesisImage;
 import knu.networksecuritylab.appserver.web.repository.MemberRepository;
 import knu.networksecuritylab.appserver.web.repository.ThesisRepository;
 import knu.networksecuritylab.appserver.web.service.ThesisService;
+import knu.networksecuritylab.appserver.web.service.file.ThesisImageFileService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -20,6 +24,7 @@ public class BasicThesisService implements ThesisService {
 
     private final ThesisRepository thesisRepository;
     private final MemberRepository memberRepository;
+    private final ThesisImageFileService thesisImageFileService;
 
     @Override
     public List<Thesis> findAllTheses() {
@@ -28,16 +33,16 @@ public class BasicThesisService implements ThesisService {
 
     @Transactional
     @Override
-    public Long addThesis(Thesis thesis, List<Long> memberIds) {
+    public Long addThesis(Thesis thesis, List<Long> memberIds, MultipartFile multipartFile) throws Exception {
 
         memberIds.forEach(memberId -> {
             Member member = memberRepository.findById(memberId).orElseThrow();
             thesis.addMember(member);
         });
 
-        thesis.getMembers().forEach(thesisMember -> {
-            log.info("thesisId: {}, memberId: {}", thesisMember.getThesis().getTitle(), thesisMember.getMember().getMemberName());
-        });
+        ThesisImage thesisImage = thesisImageFileService.multipartFileStoreAndConvertToImage(multipartFile);
+        thesisImage.setThesis(thesis);
+        thesis.setImage(thesisImage);
 
         return thesisRepository.save(thesis).getId();
     }

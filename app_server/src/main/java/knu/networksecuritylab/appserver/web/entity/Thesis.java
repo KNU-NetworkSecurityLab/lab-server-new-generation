@@ -1,6 +1,5 @@
 package knu.networksecuritylab.appserver.web.entity;
 
-import knu.networksecuritylab.appserver.app.entity.book.BookTag;
 import knu.networksecuritylab.appserver.web.entity.dto.ThesisRequestDto;
 import lombok.*;
 
@@ -28,16 +27,20 @@ public class Thesis {
     private String organization; // ex > 한국정보기술학회, 공주대학교 창업지원센터
 
     @OneToMany(mappedBy = "thesis", cascade = CascadeType.ALL)
-    private final List<ThesisMember> members = new ArrayList<>();
+    private final List<ThesisMember> thesisMembers = new ArrayList<>();
+
+    @OneToOne(mappedBy = "thesis", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private ThesisImage image;
 
     @Builder
-    public Thesis(String title, Integer year, Integer month, String prizeTitle, String prizeGrade, String organization) {
+    public Thesis(String title, Integer year, Integer month, String prizeTitle, String prizeGrade, String organization, ThesisImage image) {
         this.title = title;
         this.year = year;
         this.month = month;
         this.prizeTitle = prizeTitle;
         this.prizeGrade = prizeGrade;
         this.organization = organization;
+        this.image = image;
     }
 
     public static Thesis from(ThesisRequestDto thesisRequestDto) {
@@ -51,7 +54,11 @@ public class Thesis {
                 .build();
     }
 
+    public void setImage(ThesisImage image) {
+        this.image = image;
+    }
+
     public void addMember(final Member member) {
-        this.members.add(ThesisMember.from(member, this));
+        this.thesisMembers.add(ThesisMember.from(member, this));
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +11,7 @@
           rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/title.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/thesis.css}">
 </head>
 <body>
 <div th:insert="~{navbar :: copy}"></div>
@@ -34,6 +35,9 @@
             </div>
 
             <div th:each="thesis : ${theses}">
+                <div th:if="${thesis.image != null}">
+                    <img th:src="@{'/thesis/image/' + ${thesis.image.imageName}}" class="thesis_image">
+                </div>
                 <table>
                     <tr>
                         <td><strong th:text="${thesis.title}"></strong></td>
@@ -48,9 +52,9 @@
                     </tr>
                 </table>
 
-                <div th:each="member : ${thesis.members}">
+                <div th:each="thesisMember : ${thesis.getThesisMembers}">
                     <tr>
-                        <td th:text="${member.memberName}"></td>
+                        <td th:text="${thesisMember.member.memberName}"></td>
                     </tr>
                 </div>
             </div>
