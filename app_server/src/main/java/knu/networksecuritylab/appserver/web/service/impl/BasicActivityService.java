@@ -34,4 +34,9 @@ public class BasicActivityService implements ActivityService {
         activity.setImage(webImage);
         activityRepository.save(activity);
     }
+
+    @Override
+    public List<Activity> getRecent6Activities() {
+        return activityRepository.findTop6ByOrderByYearDesc();
+    }
 }

@@ -9,4 +9,6 @@ public interface ActivityService {
     List<Activity> getAllActivities();
 
     void addActivity(Activity activity, MultipartFile multipartFile) throws Exception;
+
+    List<Activity> getRecent6Activities();
 }

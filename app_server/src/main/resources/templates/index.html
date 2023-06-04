@@ -93,56 +93,21 @@
                 <div class="bar"></div>
                 <div class="photo_content">
                     <ul>
-                        <li>
-                            <a href="Photo.html">
+                        <div th:each="activity : ${activities}">
+                            <li><a>
                                 <figure>
-                                    <!--                                    <img th:src="@{/images/lab_logo.png}">-->
-                                    <img th:src="@{/images/photo1.jpg}" class="photo_img" width="250px" height="350px">
-
-                                    <!--                                    <img src="Resource/photo1.jpg" class="photo_img" width="250px" height="350px">-->
-                                    <figcaption>
-                                        <p class="photo_date">2023.02.15</p>
-                                        <p class="photo_subject">노는게 제일 좋아</p>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="Photo.html">
-                                <figure>
-                                    <img th:src="@{/images/photo2.jpg}" class="photo_img" width="250px" height="350px">
+                                    <img th:if="${activity.image != null}"
+                                         th:src="@{'/thesis/image/' + ${activity.image.imageName}}"
+                                         class="photo_img" width="250px" height="350px">
                                     <!--                                    <img src="Resource/photo2.jpg" class="photo_img" width="250px" height="350px">-->
                                     <figcaption>
-                                        <p class="photo_date">2023.02.15</p>
-                                        <p class="photo_subject">노는게 제일 좋아</p>
+                                        <p class="photo_date" th:text="${activity.getDateString()}">
+                                            2023.02.15</p>
+                                        <p class="photo_subject" th:text="${activity.title}">노는게 제일 좋아</p>
                                     </figcaption>
                                 </figure>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="Photo.html">
-                                <figure>
-                                    <img th:src="@{/images/photo3.jpg}" class="photo_img" width="250px" height="350px">
-                                    <!--                                    <img src="Resource/photo3.jpg" class="photo_img" width="250px" height="350px">-->
-                                    <figcaption>
-                                        <p class="photo_date">2023.02.15</p>
-                                        <p class="photo_subject">노는게 제일 좋아</p>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="Photo.html">
-                                <figure>
-                                    <img th:src="@{/images/photo4.jpg}" class="photo_img" width="250px" height="350px">
-                                    <!--                                    <img src="Resource/photo4.jpg" class="photo_img" width="250px" height="350px">-->
-                                    <figcaption>
-                                        <p class="photo_date">2023.02.15</p>
-                                        <p class="photo_subject">노는게 제일 좋아</p>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </li>
+                            </a></li>
+                        </div>
                     </ul>
                 </div>
                 <div class="more"><a href="Photo.html" th:href="@{/activity}">더보기</a></div>

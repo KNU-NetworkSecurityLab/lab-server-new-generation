@@ -47,7 +47,8 @@ public class BasicThesisService implements ThesisService {
 
 
     @Override
-    public List<Thesis> findRecent5Theses() {
-        return thesisRepository.findTop5ByOrderByIdDesc();
+    public List<Thesis> getRecent5Theses() {
+        return thesisRepository.findRecent5Theses();
     }
+
 }
