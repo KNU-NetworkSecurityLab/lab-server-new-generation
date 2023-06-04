@@ -45,7 +45,7 @@ public class ThesisController {
     public String memberAdd(
             @ModelAttribute Thesis thesis,
             @RequestParam("memberIds") List<Long> memberIds,
-            @RequestParam("thesisImage") MultipartFile thesisImage
+            @RequestParam("webImage") MultipartFile thesisImage
     ) throws Exception {
         thesisService.addThesis(thesis, memberIds, thesisImage);
         return "redirect:/thesis";

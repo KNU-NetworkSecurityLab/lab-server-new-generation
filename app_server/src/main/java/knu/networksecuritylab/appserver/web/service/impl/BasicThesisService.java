@@ -6,7 +6,7 @@ import knu.networksecuritylab.appserver.web.entity.WebImage;
 import knu.networksecuritylab.appserver.web.repository.MemberRepository;
 import knu.networksecuritylab.appserver.web.repository.ThesisRepository;
 import knu.networksecuritylab.appserver.web.service.ThesisService;
-import knu.networksecuritylab.appserver.web.service.file.ThesisImageFileService;
+import knu.networksecuritylab.appserver.web.service.file.WebImageFileService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class BasicThesisService implements ThesisService {
 
     private final ThesisRepository thesisRepository;
     private final MemberRepository memberRepository;
-    private final ThesisImageFileService thesisImageFileService;
+    private final WebImageFileService webImageFileService;
 
     @Override
     public List<Thesis> findAllTheses() {
@@ -39,7 +39,7 @@ public class BasicThesisService implements ThesisService {
             thesis.addMember(member);
         });
 
-        WebImage webImage = thesisImageFileService.multipartFileStoreAndConvertToImage(multipartFile);
+        WebImage webImage = webImageFileService.multipartFileStoreAndConvertToImage(multipartFile);
         thesis.setImage(webImage);
 
         return thesisRepository.save(thesis).getId();

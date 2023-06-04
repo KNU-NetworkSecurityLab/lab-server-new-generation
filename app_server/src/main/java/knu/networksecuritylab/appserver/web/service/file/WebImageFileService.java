@@ -20,7 +20,7 @@ import java.util.UUID;
 
 @Slf4j
 @Service
-public class ThesisImageFileService implements ThesisFileService {
+public class WebImageFileService implements WebFileService {
 
     private Path fileLocation;
     //    private final String STORAGE_PATH = "C:\\Users\\Administrator\\lab-service\\lab_service_image";
@@ -47,11 +47,10 @@ public class ThesisImageFileService implements ThesisFileService {
 
     private static WebImage convertToImage(MultipartFile multipartFile, String fileName) {
         long fileSize = multipartFile.getSize();
-        WebImage webImage = WebImage.builder()
+        return WebImage.builder()
                 .imageName(fileName)
                 .imageSize(fileSize)
                 .build();
-        return webImage;
     }
 
     private String multipartFileStore(MultipartFile multipartFile) throws IOException {

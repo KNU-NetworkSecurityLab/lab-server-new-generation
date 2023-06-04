@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class WebImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "thesis_image_id")
+    @Column(name = "image_id")
     private Long id;
     private String imageName;
     private Long imageSize;
