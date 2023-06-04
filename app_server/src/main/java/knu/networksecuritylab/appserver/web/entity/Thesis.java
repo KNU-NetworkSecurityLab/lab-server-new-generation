@@ -61,4 +61,9 @@ public class Thesis {
     public void addMember(final Member member) {
         this.thesisMembers.add(ThesisMember.from(member, this));
     }
+
+    public String getDate() {
+        String month = this.month < 10 ? "0" + this.month : String.valueOf(this.month);
+        return this.year + ". " + month;
+    }
 }

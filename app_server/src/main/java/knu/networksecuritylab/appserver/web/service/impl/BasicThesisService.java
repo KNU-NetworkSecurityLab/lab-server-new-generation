@@ -44,4 +44,10 @@ public class BasicThesisService implements ThesisService {
 
         return thesisRepository.save(thesis).getId();
     }
+
+
+    @Override
+    public List<Thesis> findRecent5Theses() {
+        return thesisRepository.findTop5ByOrderByIdDesc();
+    }
 }
