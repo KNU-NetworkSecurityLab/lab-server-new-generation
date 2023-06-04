@@ -24,4 +24,9 @@ public class MainController {
     public String notice() {
         return "notice";
     }
+
+    @GetMapping(value = "/contact")
+    public String contact() {
+        return "contact";
+    }
 }

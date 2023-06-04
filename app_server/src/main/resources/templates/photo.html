@@ -28,32 +28,32 @@
             <p>네트워크 보안 연구실에 오신 것을 환영합니다</p>
         </div>
     </div>
+
     <div id="section2">
         <div class="section2_content">
             <div class="subtitle">
                 <p>활동 사진</p>
-                <div class="bar">
-                    <div class="photo">
-                        <div class="photo_content">
-                            <ul>
-                                <div th:each="activity : ${activities}">
-                                    <li>
-                                        <a>
-                                            <figure>
-                                                <img th:if="${activity.image != null}" th:src="@{'/thesis/image/' + ${activity.image.imageName}}"
-                                                     class="photo_img" width="250px" height="350px">
-                                                <!--                                    <img src="Resource/photo2.jpg" class="photo_img" width="250px" height="350px">-->
-                                                <figcaption>
-                                                    <p class="photo_date" th:text="${activity.getDateString()}">2023.02.15</p>
-                                                    <p class="photo_subject" th:text="${activity.title}">노는게 제일 좋아</p>
-                                                </figcaption>
-                                            </figure>
-                                        </a>
-                                    </li>
-                                </div>
-                            </ul>
+                <div class="bar"></div>
+            </div>
+            <div class="photo">
+                <div class="photo_content">
+                    <ul>
+                        <div th:each="activity : ${activities}">
+                            <li><a>
+                                <figure>
+                                    <img th:if="${activity.image != null}"
+                                         th:src="@{'/thesis/image/' + ${activity.image.imageName}}"
+                                         class="photo_img" width="250px" height="350px">
+                                    <!--                                    <img src="Resource/photo2.jpg" class="photo_img" width="250px" height="350px">-->
+                                    <figcaption>
+                                        <p class="photo_date" th:text="${activity.getDateString()}">
+                                            2023.02.15</p>
+                                        <p class="photo_subject" th:text="${activity.title}">노는게 제일 좋아</p>
+                                    </figcaption>
+                                </figure>
+                            </a></li>
                         </div>
-                    </div>
+                    </ul>
                 </div>
             </div>
         </div>

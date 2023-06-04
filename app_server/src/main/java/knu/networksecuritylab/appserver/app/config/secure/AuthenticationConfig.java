@@ -41,6 +41,7 @@ public class AuthenticationConfig {
                 .antMatchers("/thesis/**").permitAll()
                 .antMatchers("/notice/**").permitAll()
                 .antMatchers("/activity/**").permitAll()
+                .antMatchers("/contact/**").permitAll()
 
                 // css, image 파일들은 모두 허용
                 .antMatchers("/css/**").permitAll()

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <title>KNU NetworkSecurityLab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/title.css}" href="../static/css/title.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}" href="../static/css/footer.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/contact.css}" href="../static/css/contact.css"/>
+
+</head>
+<body>
+<div th:insert="~{navbar :: copy}"></div>
+<div id="contents">
+    <div id="section1">
+        <div class="image_cover"></div>
+        <div class="intro_content">
+            <p>미래를 향한 꿈, 세계를 향한 도전</p>
+            <div class="intro_main">
+                <img th:src="@{/images/lab_logo.png}" class="title_logo">
+                <p class="title_text">Network Security Lab</p>
+            </div>
+            <p>네트워크 보안 연구실에 오신 것을 환영합니다</p>
+        </div>
+    </div>
+    <div id="section2">
+        <div class="section2_content">
+            <div class="subtitle">
+                <p>Contact</p>
+                <div class="bar"></div>
+            </div>
+
+            <div class="recruit">
+                <div class="recruit_content">
+                    <div class="recruit_text1">
+                        <div>
+                            <p>
+                                <strong>현</strong>재 연구실은 학부생 및 졸업생이 모여 여러 분야의 활동을 이어나가고 있습니다.<br>
+                                구성원들끼리 자유롭게 자신이 하고 싶은 것을 이야기 하며,<br>
+                                함께 성장해 나가며, 하고 싶은 것을 이루는 것을 목표로 합니다.<br>
+                                1년에 1 ~ 2회 정도 학회에 논문을 투고 및 발표하며,<br>
+                                구성원들이 모여 여러 프로젝트를 진행합니다.<br>
+                                코딩 스터디 및 IT 계열의 트렌드에 관한 정보를 공유하기도 합니다.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="recruit_text2">
+                        <p>
+                            함께 하실 분들을 모집합니다!<br>
+                        </p>
+                        <table>
+                            <tr>
+                                <td><strong>랩장</strong>&nbsp;&nbsp;전윤호</td>
+                                <td>|</td>
+                                <td>yoon6763@naver.com</td>
+                            </tr>
+                            <tr>
+                                <td>연구실</td>
+                                <td>|</td>
+                                <td>041 - 521 - 9598</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">공주대학교 천안캠퍼스 8공학관 915호</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.5918263629783!2d127.14772347582138!3d36.85225047223236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b2949ca99013d%3A0xf6ceeb549b2778d2!2z6rO17KO864yA7ZWZ6rWQIOyynOyViOy6oO2NvOyKpCDsoJw46rO17ZWZ6rSA!5e0!3m2!1sko!2skr!4v1685881846098!5m2!1sko!2skr"
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</div>
+</body>
+<div th:insert="~{footer :: copy}"></div>
+</html>
