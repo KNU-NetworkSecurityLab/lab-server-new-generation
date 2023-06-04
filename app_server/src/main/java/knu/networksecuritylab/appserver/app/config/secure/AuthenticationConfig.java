@@ -39,12 +39,14 @@ public class AuthenticationConfig {
                 .antMatchers("/").permitAll()
                 .antMatchers("/member/**").permitAll()
                 .antMatchers("/thesis/**").permitAll()
+                .antMatchers("/notice/**").permitAll()
+                .antMatchers("/activity/**").permitAll()
 
                 // css, image 파일들은 모두 허용
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/images/**").permitAll()
-                .antMatchers("/notice/**").permitAll()
-                .antMatchers("/activity/**").permitAll()
+
+                // 그 외 모든 요청은 인증 필요
                 .anyRequest().authenticated()
                 .and()
                 // 권한을 확인하는 과정에서 통과하지 못하는 예외가 발생할 경우, 예외를 전달 -> CustomAccessDeniedHandler

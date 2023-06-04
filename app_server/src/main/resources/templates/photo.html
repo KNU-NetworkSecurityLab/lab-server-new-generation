@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
           rel="stylesheet">
-    <link href="css/Footer.css" rel="stylesheet">
-    <link href="css/Title.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/title.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/photo.css}">
 </head>
 <body>
 <div th:insert="~{navbar :: copy}"></div>
@@ -21,7 +22,7 @@
         <div class="intro_content">
             <p>미래를 향한 꿈, 세계를 향한 도전</p>
             <div class="intro_main">
-                <img src="Resource/lab_logo.png" class="title_logo">
+                <img th:src="@{/images/lab_logo.png}" class="title_logo">
                 <p class="title_text">Network Security Lab</p>
             </div>
             <p>네트워크 보안 연구실에 오신 것을 환영합니다</p>
@@ -31,9 +32,30 @@
         <div class="section2_content">
             <div class="subtitle">
                 <p>활동 사진</p>
-                <div class="bar"></div>
+                <div class="bar">
+                    <div class="photo">
+                        <div class="photo_content">
+                            <ul>
+                                <div th:each="activity : ${activities}">
+                                    <li>
+                                        <a>
+                                            <figure>
+                                                <img th:if="${activity.image != null}" th:src="@{'/thesis/image/' + ${activity.image.imageName}}"
+                                                     class="photo_img" width="250px" height="350px">
+                                                <!--                                    <img src="Resource/photo2.jpg" class="photo_img" width="250px" height="350px">-->
+                                                <figcaption>
+                                                    <p class="photo_date" th:text="${activity.getDateString()}">2023.02.15</p>
+                                                    <p class="photo_subject" th:text="${activity.title}">노는게 제일 좋아</p>
+                                                </figcaption>
+                                            </figure>
+                                        </a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </div>
     </div>
 </div>
