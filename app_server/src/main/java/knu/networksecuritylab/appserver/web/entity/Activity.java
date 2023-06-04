@@ -18,7 +18,6 @@ public class Activity {
     private Long id;
 
     private String title;
-    private String content; // 클릭 시 확대해서 보여줄 내용
     private Integer year;
     private Integer month;
     private Integer day;
@@ -27,9 +26,8 @@ public class Activity {
     private WebImage image;
 
     @Builder
-    public Activity(String title, String content, Integer year, Integer month, Integer day, WebImage image) {
+    public Activity(String title, Integer year, Integer month, Integer day, WebImage image) {
         this.title = title;
-        this.content = content;
         this.year = year;
         this.month = month;
         this.day = day;
@@ -41,6 +39,19 @@ public class Activity {
     }
 
     public String getDateString() {
-        return String.format("%04d-%02d-%02d", year, month, day);
+        StringBuilder sb = new StringBuilder();
+        sb.append(year);
+
+        if (month == null || month == 0) return sb.toString();
+        sb.append(". ");
+        if (month < 10) sb.append("0");
+        sb.append(month);
+
+        if (day == null || day == 0) return sb.toString();
+        sb.append(". ");
+        if (day < 10) sb.append("0");
+        sb.append(day);
+
+        return sb.toString();
     }
 }

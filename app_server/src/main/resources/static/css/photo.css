@@ -68,5 +68,5 @@
 
 .photo {
     position: relative;
-    padding-top: 100%; /* 세로 비율 조정 */
+    padding-bottom: 100px;
 }
