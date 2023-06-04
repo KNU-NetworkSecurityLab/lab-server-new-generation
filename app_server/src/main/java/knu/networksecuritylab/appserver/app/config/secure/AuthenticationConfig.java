@@ -43,6 +43,8 @@ public class AuthenticationConfig {
                 // css, image 파일들은 모두 허용
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/images/**").permitAll()
+                .antMatchers("/notice/**").permitAll()
+                .antMatchers("/activity/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 // 권한을 확인하는 과정에서 통과하지 못하는 예외가 발생할 경우, 예외를 전달 -> CustomAccessDeniedHandler
