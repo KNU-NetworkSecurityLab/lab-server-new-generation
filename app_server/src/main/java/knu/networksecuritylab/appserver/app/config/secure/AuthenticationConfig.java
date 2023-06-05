@@ -23,7 +23,6 @@ public class AuthenticationConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
-                .httpBasic().disable() // UI 인증이 아닌 토큰 인이기 때문에 basic disable
                 .csrf().disable() // Cross-Site Request Forgery 방지
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // jwt 이용 시 사용
                 .and()
@@ -47,8 +46,15 @@ public class AuthenticationConfig {
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/images/**").permitAll()
 
+                .and()
+                .formLogin()
+                .loginPage("/login") // 세션이 필요한 페이지에 접근 시, 로그인 페이지로 이동
+                .defaultSuccessUrl("/admin") // 로그인 성공 시, 이동할 페이지
+                .and()
+                // admin으로 시작하는 모든 요청 ADIMN ROLE이 필요
+                .antMatcher("/admin/**").authorizeRequests().anyRequest().hasRole("ADMIN")
+
                 // 그 외 모든 요청은 인증 필요
-                .anyRequest().authenticated()
                 .and()
                 // 권한을 확인하는 과정에서 통과하지 못하는 예외가 발생할 경우, 예외를 전달 -> CustomAccessDeniedHandler
                 .exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler())
@@ -57,6 +63,7 @@ public class AuthenticationConfig {
                 .exceptionHandling().authenticationEntryPoint(new CustomAuthenticationEntryPoint())
                 .and()
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+
                 .build();
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,6 +44,9 @@
     </div>
     <div id="section2">
         <div class="section2_content">
+            <span sec:authentication="name"></span>
+            <span sec:authentication="principal"></span>
+
             <div class="introduce">
                 <div class="bar"></div>
                 <p class="introduce_lab">
@@ -61,7 +64,9 @@
                     <div th:each="thesis : ${theses}">
                         <tr>
                             <td class="td_type">[논문]</td>
-                            <td class="td_subject"><a th:href="@{/thesis}" th:text="${thesis.title} + ' - ' +${thesis.prizeTitle} + ' ' + ${thesis.prizeGrade}"></a></td>
+                            <td class="td_subject"><a th:href="@{/thesis}"
+                                                      th:text="${thesis.title} + ' - ' +${thesis.prizeTitle} + ' ' + ${thesis.prizeGrade}"></a>
+                            </td>
                             <td class="td_date" th:text="${thesis.getDate()}"></td>
                         </tr>
                         <!--                        <tr>-->
