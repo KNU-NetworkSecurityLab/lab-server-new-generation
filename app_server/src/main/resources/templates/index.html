@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,12 +45,14 @@
     </div>
     <div id="section2">
         <div class="section2_content">
-            <span sec:authentication="name"></span>
-            <span sec:authentication="principal"></span>
-
             <div class="introduce">
                 <div class="bar"></div>
                 <p class="introduce_lab">
+                    <span>DEV</span>
+                    <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}">로그인</a>
+                    <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃</a>
+                    <span sec:authentication="name"></span>
+                    <span sec:authentication="principal"></span>
                     네트워크 보안 연구실 (Network Security Lab.)은 김황래 교수님의 지도 아래, 학생들이 주도적으로 네트워크 및 보안 연구를 진행하는 연구실입니다. 네트워크 및 보안
                     뿐만 아니라, 알고리즘 및 코딩 스터디는 물론, 웹 프론트엔드 및 백엔드, 모바일 애플리케이션과 언리얼과 같은 게임개발 등 다방면으로 관심이 있는 사람들이 모여 있습니다.
                     우리 연구실은 연구원들 간의 협력과 자율성을 중요시합니다. 부원들끼리 프로젝트를 진행하고, 매년 연구 주제를 정해 논문을 집필하며, 학회에 출품하여 발표도 진행합니다. 이를 통해
