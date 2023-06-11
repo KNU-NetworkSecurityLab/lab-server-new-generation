@@ -7,6 +7,7 @@ import knu.networksecuritylab.appserver.web.entity.WebImage;
 import knu.networksecuritylab.appserver.web.entity.dto.ThesisRequestDto;
 import knu.networksecuritylab.appserver.web.repository.MemberRepository;
 import knu.networksecuritylab.appserver.web.repository.ThesisRepository;
+import knu.networksecuritylab.appserver.web.service.ContributorService;
 import knu.networksecuritylab.appserver.web.service.ThesisService;
 import knu.networksecuritylab.appserver.web.service.file.WebImageFileService;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,7 @@ public class BasicThesisService implements ThesisService {
     private final ThesisRepository thesisRepository;
     private final MemberRepository memberRepository;
     private final WebImageFileService webImageFileService;
+    private final ContributorService contributorService;
 
     @Override
     public List<Thesis> findAllTheses() {
@@ -40,11 +42,14 @@ public class BasicThesisService implements ThesisService {
         WebImage webImage = webImageFileService.multipartFileStoreAndConvertToImage(multipartFile);
 
         Thesis thesis = Thesis.from(thesisRequestDto, webImage);
-        
+
         thesisRequestDto.getMembers().forEach(memberId -> {
             Member member = memberRepository.findById(memberId).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 회원입니다."));
             thesis.addMember(member);
         });
+
+        contributorService.contributorArrangement(thesisRequestDto.getContributors())
+                .forEach(thesis::addContributor);
 
         return thesisRepository.save(thesis).getId();
     }

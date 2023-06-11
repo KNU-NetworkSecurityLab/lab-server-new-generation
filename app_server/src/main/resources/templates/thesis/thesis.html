@@ -49,6 +49,9 @@
                     <span th:each="thesisMember : ${thesis.getThesisMembers}">
                         <span class="text" th:text="${thesisMember.member.memberName} + ' '"></span>
                     </span>
+                    <span th:each="thesisContributor : ${thesis.getThesisContributors}">
+                        <span class="text" th:text="${thesisContributor.contributor.name} + ' '"></span>
+                    </span>
                 </div>
             </div>
         </div>

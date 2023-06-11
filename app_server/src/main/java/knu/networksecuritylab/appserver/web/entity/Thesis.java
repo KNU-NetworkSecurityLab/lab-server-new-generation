@@ -11,7 +11,6 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @Getter
-@Data
 public class Thesis {
 
     @Id
@@ -28,6 +27,9 @@ public class Thesis {
 
     @OneToMany(mappedBy = "thesis", cascade = CascadeType.ALL)
     private List<ThesisMember> thesisMembers = new ArrayList<>();
+
+    @OneToMany(mappedBy = "thesis", cascade = CascadeType.ALL)
+    private List<ThesisContributor> thesisContributors = new ArrayList<>();
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private WebImage image;
@@ -73,5 +75,9 @@ public class Thesis {
 
     public void addMember(Member member) {
         this.thesisMembers.add(ThesisMember.from(member, this));
+    }
+
+    public void addContributor(Contributor contributor) {
+        this.thesisContributors.add(ThesisContributor.from(contributor, this));
     }
 }

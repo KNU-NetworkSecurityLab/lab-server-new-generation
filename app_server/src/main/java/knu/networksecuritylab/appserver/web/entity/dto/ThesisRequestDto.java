@@ -1,6 +1,5 @@
 package knu.networksecuritylab.appserver.web.entity.dto;
 
-import knu.networksecuritylab.appserver.web.entity.Member;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -8,9 +7,8 @@ import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
-@Getter
 @Builder
+@Data
 public class ThesisRequestDto {
     private String title; // 제목, ex> 위치기반 코로나 19 방역알림 프로젝트
     private Integer year;
@@ -20,4 +18,5 @@ public class ThesisRequestDto {
     private String organization; // ex> 한국정보기술학회, 공주대학교 창업지원센터
 
     private List<Long> members = new ArrayList<>();
+    private List<String> contributors = new ArrayList<>();
 }
