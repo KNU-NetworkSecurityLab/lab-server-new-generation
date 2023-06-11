@@ -7,6 +7,7 @@ import knu.networksecuritylab.appserver.app.controller.user.dto.SignUpRequestDto
 import knu.networksecuritylab.appserver.app.controller.user.dto.UserInfoResponseDto;
 import knu.networksecuritylab.appserver.app.controller.user.dto.WithdrawalRequestDto;
 import knu.networksecuritylab.appserver.app.entity.user.User;
+import knu.networksecuritylab.appserver.app.entity.user.UserRole;
 import knu.networksecuritylab.appserver.app.exception.user.impl.InvalidAuthenticationException;
 import knu.networksecuritylab.appserver.app.exception.user.impl.InvalidUsernameOrPassword;
 import knu.networksecuritylab.appserver.app.exception.user.impl.UserNotFoundException;
@@ -65,7 +66,7 @@ public class BasicUserService implements UserService {
 
             Long authenticatedId = user.getId();
             String authenticatedStudentId = user.getUsername();
-            List<String> roles = user.getRoles();
+            List<UserRole> roles = user.getRoles();
 
             return TOKEN_PREFIX + jwtProvider
                     .createToken(authenticatedId, authenticatedStudentId, roles, 2);

@@ -41,26 +41,31 @@ public class AuthenticationConfig {
 
                 // web
                 .antMatchers("/").permitAll()
-                .antMatchers("/member/**").permitAll()
-                .antMatchers("/thesis/**").permitAll()
-                .antMatchers("/notice/**").permitAll()
-                .antMatchers("/activity/**").permitAll()
-                .antMatchers("/contact/**").permitAll()
+                .antMatchers("/member").permitAll()
+                .antMatchers("/thesis").permitAll()
+                .antMatchers("/notice").permitAll()
+                .antMatchers("/activity").permitAll()
+                .antMatchers("/contact").permitAll()
 
                 // css, image 파일들은 모두 허용
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/images/**").permitAll()
+                .antMatchers("/**/image/**").permitAll() // 이미지를 불러오는 요청
 
                 .antMatchers("/login").permitAll()
 
-                // admin으로 시작하는 모든 요청 ADIMN ROLE이 필요
+                // 조회를 제외한 삽입 수정 삭제는 ADMIN 권한 필요
                 .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/thesis/**").hasRole("ADMIN")
+                .antMatchers("/member/**").hasRole("ADMIN")
+                .antMatchers("/notice/**").hasRole("ADMIN")
+                .antMatchers("/activity/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
 
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/admin")
                 .usernameParameter("studentId")
                 .failureUrl("/login/error")
                 .and()

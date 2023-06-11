@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <nav id="nav" th:fragment="copy">
     <div class="logo_div">
@@ -13,5 +13,7 @@
         <li><a href="photo.html" th:href="@{/activity}">PHOTO</a></li>
         <!--        <li><a href="History.html">HISTORY</a></li>-->
         <li><a href="contact.html" th:href="@{/contact}">CONTACT</a></li>
+
+        <li><a href="adminDashBoard.html" sec:authorize="isAuthenticated()" th:href="@{/admin}">DASHBOARD</a></li>
     </ul>
 </nav>

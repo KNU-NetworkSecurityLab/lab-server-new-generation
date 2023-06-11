@@ -25,18 +25,9 @@ public class MainController {
 
     private final ActivityService activityService;
     private final ThesisService thesisService;
-    private final UserService userService;
 
     @GetMapping(value = "/")
     public String index(Model model, @AuthenticationPrincipal User user) {
-//        if (principal != null) {
-//            model.addAttribute("user", userService.getUserInfo(principal.getName()));
-//            log.debug("user debug log: {}", userService.getUserInfo(principal.getName()).getName());
-//        } else {
-//            model.addAttribute("user", null);
-//            log.debug("user debug log: null");
-//        }
-
         if (user != null) {
             model.addAttribute("user", user);
             log.debug("user debug log: {}", user.getName());
@@ -60,10 +51,8 @@ public class MainController {
         return "contact";
     }
 
-
     @GetMapping("/login")
     public String adminLogin() {
         return "adminLogin";
     }
-
 }
