@@ -61,6 +61,7 @@ public class AuthenticationConfig {
 //                .antMatchers("/notice/**").hasRole("ADMIN")
 //                .antMatchers("/activity/**").hasRole("ADMIN")
 //                .anyRequest().authenticated()
+                .antMatchers("/admin/**").permitAll()
 
                 .and()
                 .formLogin()
