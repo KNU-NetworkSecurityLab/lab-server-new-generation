@@ -23,30 +23,35 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Member List</h1>
+                <h1 class="mt-4">Member Register</h1>
 
-                <form action="member.html" th:action method="post" class="needs-validation w-25 mx-auto mt-5" novalidate>
+                <form action="member.html" th:action method="post" th:object="${member}"
+                      class="needs-validation w-25 mx-auto mt-5" novalidate>
                     <div>
                         <label for="memberName" class="form-label mx-auto">이름</label>
-                        <input type="text" id="memberName" name="memberName" class="form-control" placeholder="이름을 입력하세요">
+                        <input type="text" id="memberName" name="memberName" th:field="*{memberName}"
+                               class="form-control" placeholder="이름을 입력하세요">
                     </div>
                     <div>
                         <label for="email" class="form-label mx-auto">이메일</label>
-                        <input type="text" id="email" name="email" class="form-control" placeholder="이메일을 입력하세요">
+                        <input type="text" id="email" name="email" th:field="*{email}" class="form-control"
+                               placeholder="이메일을 입력하세요">
                     </div>
 
                     <div>
                         <label for="major" class="form-label mx-auto">전공</label>
-                        <input type="text" id="major" name="major" class="form-control" placeholder="전공을 입력하세요">
+                        <input type="text" id="major" name="major" th:field="*{major}" class="form-control"
+                               placeholder="전공을 입력하세요">
                     </div>
 
                     <div>
                         <label class="form-label mx-auto">멤버 상태</label>
                         <div th:each="memberState : ${memberStates}">
                             <input type="radio" th:id="${memberState}" th:name="memberState" th:value="${memberState}"
+                                   th:field="*{memberState}"
                                    class="form-check-input">
-                            <label th:for="${memberState}" class="form-check-label" th:text="${memberState.displayName}"></label>
-
+                            <label th:for="${memberState}" class="form-check-label"
+                                   th:text="${memberState.displayName}"></label>
                         </div>
                     </div>
 

@@ -1,11 +1,13 @@
 package knu.networksecuritylab.appserver.web.entity.dto;
 
 import knu.networksecuritylab.appserver.web.entity.MemberState;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 @Getter
 @Builder
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class MemberRequestDto {
     private String memberName;
     private String email;
