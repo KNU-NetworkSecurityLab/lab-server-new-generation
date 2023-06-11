@@ -28,7 +28,7 @@ public class MemberController {
     public String member(Model model) {
         model.addAttribute("professor", memberService.getProfessor());
         model.addAttribute("members", memberService.studentList());
-        return "member";
+        return "member/member";
     }
 
     @PostMapping(value = "/add")
@@ -39,6 +39,6 @@ public class MemberController {
 
     @GetMapping(value = "/add")
     public String memberAddForm() {
-        return "memberRegister";
+        return "member/memberRegister";
     }
 }

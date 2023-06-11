@@ -32,13 +32,13 @@ public class ActivityController {
     public String photo(Model model) {
         List<Activity> activities = activityService.getAllActivities();
         model.addAttribute("activities", activities);
-        return "photo";
+        return "photo/photo";
     }
 
     @GetMapping("/add")
     public String addPhotoForm(Model model) {
         model.addAttribute("activity", new Activity());
-        return "photoRegister";
+        return "photo/photoRegister";
     }
 
     @PostMapping("/add")

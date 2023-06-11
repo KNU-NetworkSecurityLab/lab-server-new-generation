@@ -38,7 +38,7 @@ public class ThesisController {
     @GetMapping
     public String publication(Model model) {
         model.addAttribute("theses", thesisService.findAllTheses());
-        return "thesis";
+        return "thesis/thesis";
     }
 
     @PostMapping(value = "/add")
@@ -54,7 +54,7 @@ public class ThesisController {
     @GetMapping(value = "/add")
     public String thesisAddForm(Model model) {
         model.addAttribute("thesis", new Thesis());
-        return "thesisRegister";
+        return "thesis/thesisRegister";
     }
 
     @GetMapping("/image/{fileName:.+}")
