@@ -12,4 +12,8 @@ public interface MemberService {
     Long addMember(MemberRequestDto memberRequestDto);
 
     Member getMemberById(Long id);
+
+    void deleteMember(Long id);
+
+    void updateMember(Long id, Member member);
 }

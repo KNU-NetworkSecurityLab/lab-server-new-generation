@@ -44,4 +44,18 @@ public class BasicMemberService implements MemberService {
     public Member getMemberById(Long id) {
         return memberRepository.findById(id).orElseThrow();
     }
+
+    @Transactional
+    @Override
+    public void deleteMember(Long id) {
+        memberRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public void updateMember(Long id, Member member) {
+        Member findMember = memberRepository.findById(id).orElseThrow();
+        findMember.update(member);
+        memberRepository.save(findMember);
+    }
 }

@@ -45,4 +45,11 @@ public class Member {
                 .memberState(memberRequestDto.getMemberState())
                 .build();
     }
+
+    public void update(Member member) {
+        this.memberName = member.getMemberName();
+        this.email = member.getEmail();
+        this.major = member.getMajor();
+        this.memberState = member.getMemberState();
+    }
 }
