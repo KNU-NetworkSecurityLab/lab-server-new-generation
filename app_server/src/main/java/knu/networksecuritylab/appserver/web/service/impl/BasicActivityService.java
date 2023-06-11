@@ -7,6 +7,7 @@ import knu.networksecuritylab.appserver.web.service.ActivityService;
 import knu.networksecuritylab.appserver.web.service.file.WebImageFileService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,7 +25,7 @@ public class BasicActivityService implements ActivityService {
 
     @Override
     public List<Activity> getAllActivities() {
-        return activityRepository.findAll();
+        return activityRepository.findActivitiesOrOrderByDayDesc();
     }
 
     @Transactional
@@ -37,6 +38,6 @@ public class BasicActivityService implements ActivityService {
 
     @Override
     public List<Activity> getRecent6Activities() {
-        return activityRepository.findTop6ByOrderByYearDesc();
+        return activityRepository.findTop6ByOrderByYearDesc(PageRequest.of(0, 6));
     }
 }

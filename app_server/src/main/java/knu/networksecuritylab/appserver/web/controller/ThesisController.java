@@ -1,7 +1,7 @@
 package knu.networksecuritylab.appserver.web.controller;
 
 import knu.networksecuritylab.appserver.web.entity.Member;
-import knu.networksecuritylab.appserver.web.entity.Thesis;
+import knu.networksecuritylab.appserver.web.entity.dto.ThesisRequestDto;
 import knu.networksecuritylab.appserver.web.service.MemberService;
 import knu.networksecuritylab.appserver.web.service.ThesisService;
 import lombok.RequiredArgsConstructor;
@@ -43,17 +43,16 @@ public class ThesisController {
 
     @PostMapping(value = "/add")
     public String memberAdd(
-            @ModelAttribute Thesis thesis,
-            @RequestParam("memberIds") List<Long> memberIds,
+            @ModelAttribute ThesisRequestDto thesisRequestDto,
             @RequestParam("webImage") MultipartFile thesisImage
     ) throws Exception {
-        thesisService.addThesis(thesis, memberIds, thesisImage);
+        thesisService.addThesis(thesisRequestDto, thesisImage);
         return "redirect:/thesis";
     }
 
     @GetMapping(value = "/add")
     public String thesisAddForm(Model model) {
-        model.addAttribute("thesis", new Thesis());
+        model.addAttribute("thesis", new ThesisRequestDto());
         return "thesis/thesisRegister";
     }
 

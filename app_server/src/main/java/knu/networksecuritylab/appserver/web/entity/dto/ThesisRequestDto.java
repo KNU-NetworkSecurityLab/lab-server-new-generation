@@ -19,5 +19,5 @@ public class ThesisRequestDto {
     private String prizeGrade; // 수상등급 ex> 최우수상, 금상, 은상, 동상
     private String organization; // ex> 한국정보기술학회, 공주대학교 창업지원센터
 
-    private List<Member> authors = new ArrayList<>();
+    private List<Long> members = new ArrayList<>();
 }
