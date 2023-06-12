@@ -25,7 +25,7 @@ public class Thesis {
     private String prizeGrade; // 수상등급 ex> 최우수상, 금상, 은상, 동상
     private String organization; // ex > 한국정보기술학회, 공주대학교 창업지원센터
 
-    @OneToMany(mappedBy = "thesis", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "thesis", cascade = CascadeType.PERSIST)
     private List<ThesisMember> thesisMembers = new ArrayList<>();
 
     @OneToMany(mappedBy = "thesis", cascade = CascadeType.ALL)

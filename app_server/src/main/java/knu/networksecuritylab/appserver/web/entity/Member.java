@@ -26,7 +26,7 @@ public class Member {
     private String major; // 주 분야
     private MemberState memberState;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
     private List<ThesisMember> thesisMembers = new ArrayList<>();
 
     @Builder
