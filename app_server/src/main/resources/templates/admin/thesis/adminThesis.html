@@ -33,27 +33,35 @@
 
                     <div class="card-body">
                         <table id="datatablesSimple" class="table table-bordered">
-                            <thead class="table-dark">
+                            <thead class="table-light">
                             <tr class="table-primary">
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Major</th>
-                                <th>Position</th>
-                                <th>Edit</th>
+                                <th>Title</th>
+                                <th>Year</th>
+                                <th>Month</th>
+                                <th>PrizeTitle</th>
+                                <th>PrizeGrade</th>
+                                <th>Organization</th>
+                                <th>Author</th>
+                                <th>Contributor</th>
+                                <th>수정</th>
                             </tr>
                             </thead>
                             <tbody class="table-light">
 
-                            <div th:each="member : ${members}" class="col-md-4">
+                            <div th:each="thesis : ${theses}" class="col-md-4">
                                 <tr>
-                                    <td th:text="${member.id}"></td>
-                                    <td th:text="${member.memberName}"></td>
-                                    <td th:text="${member.email}"></td>
-                                    <td th:text="${member.major}"></td>
-                                    <td th:text="${member.memberState.displayName}"></td>
+                                    <td th:text="${thesis.id}"></td>
+                                    <td th:text="${thesis.title}"></td>
+                                    <td th:text="${thesis.year}"></td>
+                                    <td th:text="${thesis.month}"></td>
+                                    <td th:text="${thesis.prizeTitle}"></td>
+                                    <td th:text="${thesis.prizeGrade}"></td>
+                                    <td th:text="${thesis.organization}"></td>
+                                    <td th:text="${thesis.getMembers()}"></td>
+                                    <td th:text="${thesis.getContributors()}"></td>
                                     <td>
-                                        <a th:href="@{/admin/member/edit/{id}(id=${member.id})}"
+                                        <a th:href="@{/admin/thesis/edit/{id}(id=${thesis.id})}"
                                            class="btn btn-primary btn-sm">수정</a>
                                     </td>
                                 </tr>
@@ -64,7 +72,7 @@
                 </div>
 
                 <div class="card-footer align-content-end">
-                    <a th:href="@{/admin/member/add}" class="btn btn-primary btn-sm">부원 추가</a>
+                    <a th:href="@{/admin/thesis/add}" class="btn btn-primary btn-sm">논문 추가</a>
                 </div>
             </div>
         </main>

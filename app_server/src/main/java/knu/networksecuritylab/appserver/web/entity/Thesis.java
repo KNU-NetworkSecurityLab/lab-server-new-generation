@@ -80,4 +80,20 @@ public class Thesis {
     public void addContributor(Contributor contributor) {
         this.thesisContributors.add(ThesisContributor.from(contributor, this));
     }
+
+    public String getContributors() {
+        StringBuilder sb = new StringBuilder();
+        for (ThesisContributor thesisContributor : this.thesisContributors) {
+            sb.append(thesisContributor.getContributor().getName()).append("\n");
+        }
+        return sb.toString();
+    }
+
+    public String getMembers() {
+        StringBuilder sb = new StringBuilder();
+        for (ThesisMember thesisMember : this.thesisMembers) {
+            sb.append(thesisMember.getMember().getMemberName()).append("\n");
+        }
+        return sb.toString();
+    }
 }
