@@ -4,16 +4,16 @@ import knu.networksecuritylab.appserver.app.common.BookRegisterRequestDtoConvert
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @RequiredArgsConstructor
-public class ConverterConfig extends WebMvcConfigurationSupport {
+public class ConverterConfig implements WebMvcConfigurer {
 
     private final BookRegisterRequestDtoConverter bookRegisterRequestDtoConverter;
 
     @Override
-    protected void addFormatters(FormatterRegistry registry) {
+    public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(bookRegisterRequestDtoConverter);
     }
 }

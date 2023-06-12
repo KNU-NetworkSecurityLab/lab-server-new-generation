@@ -1,10 +1,6 @@
 package knu.networksecuritylab.appserver.app.controller.user.dto;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
@@ -12,8 +8,9 @@ import javax.validation.constraints.Size;
 
 @Getter
 @ToString
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor
+@Setter
 public class SignInRequestDto {
 
     @Column(unique = true)

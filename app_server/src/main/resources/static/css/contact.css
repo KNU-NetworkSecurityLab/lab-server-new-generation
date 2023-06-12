@@ -1,0 +1,61 @@
+/* 모집 */
+.recruit {
+    padding-bottom: 100px;
+}
+.recruit_content {
+    height: 350px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.recruit_text1 {
+    background-image: url("../images/hongbo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 65%;
+    height: 100%;
+}
+.recruit_text1  div {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.recruit_text1 div p {
+    color: #fff;
+    padding-left: 10%;
+    line-height: 2;
+}
+.recruit_text1 div p strong {
+    font-size: 30px;
+    font-weight:normal;
+}
+.recruit_text2 {
+    background-color: white;
+    width: 35%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.recruit_text2 p {
+    font-size: 20px;
+    padding-bottom: 24px;
+    font-weight: 900;
+}
+.recruit_text2 table {
+    border-collapse: collapse;
+}
+.recruit_text2 table td {
+    padding : 10px;
+}
+.recruit_text2 table td strong {
+    font-weight: 700;
+}
+
+iframe {
+    margin-bottom: 50px;
+}

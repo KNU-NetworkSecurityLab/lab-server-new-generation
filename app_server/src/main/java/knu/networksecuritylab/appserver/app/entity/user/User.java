@@ -48,10 +48,11 @@ public class User implements UserDetails {
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "role", joinColumns = @JoinColumn(name = "user_id"))
     @Column(name = "role_name")
-    private List<String> roles;
+    @Enumerated(EnumType.STRING)
+    private List<UserRole> roles;
 
     @Builder
-    private User(String studentId, String password, String email, String name, List<String> roles) {
+    private User(String studentId, String password, String email, String name, List<UserRole> roles) {
         this.studentId = studentId;
         this.password = password;
         this.email = email;
@@ -61,8 +62,8 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roles.stream().map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
+        return this.roles.stream()
+                .map(role -> new SimpleGrantedAuthority(role.getValue())).collect(Collectors.toList());
     }
 
     @Override
@@ -96,7 +97,7 @@ public class User implements UserDetails {
                 .password(passwordEncoder.encode(signUpRequestDto.getPassword()))
                 .name(signUpRequestDto.getName())
                 .email(signUpRequestDto.getEmail())
-                .roles(Collections.singletonList("ROLE_USER"))
+                .roles(Collections.singletonList(UserRole.USER))
                 .build();
     }
 

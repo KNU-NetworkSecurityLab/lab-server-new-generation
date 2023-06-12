@@ -1,0 +1,23 @@
+.thesis-image {
+    width: 150px;
+    height: 300px;
+    margin-right: 50px;
+}
+
+.thesis-container {
+    display: flex;
+    align-items: center; /* 요소들을 수직 가운데 정렬합니다. */
+}
+
+
+.text {
+    line-height: 2.5; /* 줄 간격을 조절합니다. */
+    text-align: left; /* 텍스트를 좌측으로 정렬합니다. */
+}
+
+.thesis-title {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 3.5; /* 줄 간격을 조절합니다. */
+    text-align: left; /* 텍스트를 좌측으로 정렬합니다. */
+}

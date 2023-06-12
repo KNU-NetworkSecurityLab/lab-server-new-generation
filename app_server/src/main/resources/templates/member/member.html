@@ -1,0 +1,86 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.png}"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <title>KNU NetworkSecurityLab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/member.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/title.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+</head>
+<body>
+
+<div th:insert="~{common/navbar :: copy}"></div>
+
+<div id="contents">
+    <div id="section1">
+        <div class="image_cover"></div>
+        <div class="intro_content">
+            <p>미래를 향한 꿈, 세계를 향한 도전</p>
+            <div class="intro_main">
+                <img th:src="@{/images/lab_logo.png}" class="title_logo">
+                <p class="title_text">Network Security Lab</p>
+            </div>
+            <p>네트워크 보안 연구실에 오신 것을 환영합니다</p>
+        </div>
+    </div>
+    <div id="section2">
+        <div class="section2_content">
+            <div class="subtitle">
+                <p>구성원 소개</p>
+                <div class="bar"></div>
+            </div>
+            <!-- 교수님 -->
+            <div class="professor" th:if="${professor != null}">
+                <div class="profile_photo"></div>
+                <table>
+                    <tr>
+                        <td th:text="${professor.memberName}"><strong>김황래</strong></td>
+                        <td th:text="${professor.memberState.getDisplayName()}">교수</td>
+                    </tr>
+                    <tr>
+                        <td>전공</td>
+                        <td th:text="${professor.major}">컴퓨터 네트워크</td>
+                    </tr>
+                    <tr>
+                        <td>연구실</td>
+                        <td>8공 어딘가</td>
+                    </tr>
+                    <tr>
+                        <td>이메일</td>
+                        <td th:text="${professor.email}">0000@00000.com</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="student">
+                <!-- thyemleaf로 반복문 돌리기 -->
+                <div th:each="member : ${members}">
+                    <table>
+                        <tr>
+                            <td><strong th:text="${member.memberName}"></strong></td>
+                        </tr>
+                        <tr>
+                            <td th:text="${member.memberState.displayName}"></td>
+                        <tr>
+                            <td th:text="${member.major}"></td>
+                        </tr>
+                        <tr>
+                            <td th:text="${member.email}"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="~{common/footer :: copy}"></div>
+</body>
+</html>
