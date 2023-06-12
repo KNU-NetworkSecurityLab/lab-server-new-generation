@@ -1,5 +1,6 @@
 package knu.networksecuritylab.appserver.web.entity;
 
+import knu.networksecuritylab.appserver.web.entity.dto.ActivityRequestDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -34,9 +35,16 @@ public class Activity {
         this.image = image;
     }
 
-    public void setImage(WebImage image) {
-        this.image = image;
+    public static Activity from(ActivityRequestDto activityRequestDto, WebImage webImage) {
+        return Activity.builder()
+                .title(activityRequestDto.getTitle())
+                .year(activityRequestDto.getYear())
+                .month(activityRequestDto.getMonth())
+                .day(activityRequestDto.getDay())
+                .image(webImage)
+                .build();
     }
+
 
     public String getDateString() {
         StringBuilder sb = new StringBuilder();

@@ -2,6 +2,7 @@ package knu.networksecuritylab.appserver.web.service.impl;
 
 import knu.networksecuritylab.appserver.web.entity.Activity;
 import knu.networksecuritylab.appserver.web.entity.WebImage;
+import knu.networksecuritylab.appserver.web.entity.dto.ActivityRequestDto;
 import knu.networksecuritylab.appserver.web.repository.ActivityRepository;
 import knu.networksecuritylab.appserver.web.service.ActivityService;
 import knu.networksecuritylab.appserver.web.service.file.WebImageFileService;
@@ -25,14 +26,15 @@ public class BasicActivityService implements ActivityService {
 
     @Override
     public List<Activity> getAllActivities() {
+
         return activityRepository.findActivitiesOrOrderByDayDesc();
     }
 
     @Transactional
     @Override
-    public void addActivity(Activity activity, MultipartFile multipartFile) throws Exception {
+    public void addActivity(ActivityRequestDto activityRequestDto, MultipartFile multipartFile) throws Exception {
         WebImage webImage = webImageFileService.multipartFileStoreAndConvertToImage(multipartFile);
-        activity.setImage(webImage);
+        Activity activity = Activity.from(activityRequestDto, webImage);
         activityRepository.save(activity);
     }
 

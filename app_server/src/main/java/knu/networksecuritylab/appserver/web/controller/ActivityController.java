@@ -2,6 +2,7 @@ package knu.networksecuritylab.appserver.web.controller;
 
 import knu.networksecuritylab.appserver.web.entity.Activity;
 import knu.networksecuritylab.appserver.web.entity.Thesis;
+import knu.networksecuritylab.appserver.web.entity.dto.ActivityRequestDto;
 import knu.networksecuritylab.appserver.web.service.ActivityService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -43,10 +44,10 @@ public class ActivityController {
 
     @PostMapping("/add")
     public String memberAdd(
-            @ModelAttribute Activity activity,
+            @ModelAttribute ActivityRequestDto activityRequestDto,
             @RequestParam("webImage") MultipartFile thesisImage
     ) throws Exception {
-        activityService.addActivity(activity, thesisImage);
+        activityService.addActivity(activityRequestDto, thesisImage);
         return "redirect:/activity";
     }
 

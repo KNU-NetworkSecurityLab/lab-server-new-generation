@@ -30,15 +30,4 @@ public class MemberController {
         model.addAttribute("members", memberService.studentList());
         return "member/member";
     }
-
-    @PostMapping(value = "/add")
-    public String memberAdd(MemberRequestDto memberRequestDto) {
-        memberService.addMember(memberRequestDto);
-        return "redirect:/member";
-    }
-
-    @GetMapping(value = "/add")
-    public String memberAddForm() {
-        return "member/memberRegister";
-    }
 }

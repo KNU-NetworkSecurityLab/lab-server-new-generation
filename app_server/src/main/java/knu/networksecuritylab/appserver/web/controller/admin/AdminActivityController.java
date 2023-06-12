@@ -1,6 +1,8 @@
 package knu.networksecuritylab.appserver.web.controller.admin;
 
+import knu.networksecuritylab.appserver.web.entity.Activity;
 import knu.networksecuritylab.appserver.web.entity.Member;
+import knu.networksecuritylab.appserver.web.entity.dto.ActivityRequestDto;
 import knu.networksecuritylab.appserver.web.entity.dto.ThesisRequestDto;
 import knu.networksecuritylab.appserver.web.service.ActivityService;
 import knu.networksecuritylab.appserver.web.service.MemberService;
@@ -36,4 +38,31 @@ public class AdminActivityController {
         return "admin/photo/adminPhoto";
     }
 
+    @GetMapping("/add")
+    public String addPhotoForm(Model model) {
+        model.addAttribute("activity", new ActivityRequestDto());
+        return "admin/photo/adminPhotoRegister";
+    }
+
+    @PostMapping("/add")
+    public String memberAdd(
+            @ModelAttribute ActivityRequestDto activityRequestDto,
+            @RequestParam("webImage") MultipartFile thesisImage
+    ) throws Exception {
+        activityService.addActivity(activityRequestDto, thesisImage);
+        return "redirect:/admin/activity";
+    }
+
+
+    @GetMapping("/image/{fileName:.+}")
+    @ResponseBody
+    public ResponseEntity<Resource> serveImage(@PathVariable String fileName) {
+        Resource file = new FileSystemResource(uploadPath + '/' + fileName);
+
+        if (file.exists()) {
+            return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg").body(file);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

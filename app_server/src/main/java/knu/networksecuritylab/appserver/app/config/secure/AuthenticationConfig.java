@@ -55,13 +55,7 @@ public class AuthenticationConfig {
                 .antMatchers("/login").permitAll()
 
                 // 조회를 제외한 삽입 수정 삭제는 ADMIN 권한 필요
-//                .antMatchers("/admin/**").hasRole("ADMIN")
-//                .antMatchers("/thesis/**").hasRole("ADMIN")
-//                .antMatchers("/member/**").hasRole("ADMIN")
-//                .antMatchers("/notice/**").hasRole("ADMIN")
-//                .antMatchers("/activity/**").hasRole("ADMIN")
-//                .anyRequest().authenticated()
-                .antMatchers("/admin/**").permitAll()
+                .antMatchers("/admin/**").hasRole("ADMIN")
 
                 .and()
                 .formLogin()

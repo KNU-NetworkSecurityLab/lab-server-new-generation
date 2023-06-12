@@ -41,21 +41,6 @@ public class ThesisController {
         return "thesis/thesis";
     }
 
-    @PostMapping(value = "/add")
-    public String memberAdd(
-            @ModelAttribute ThesisRequestDto thesisRequestDto,
-            @RequestParam("webImage") MultipartFile thesisImage
-    ) throws Exception {
-        thesisService.addThesis(thesisRequestDto, thesisImage);
-        return "redirect:/thesis";
-    }
-
-    @GetMapping(value = "/add")
-    public String thesisAddForm(Model model) {
-        model.addAttribute("thesis", new ThesisRequestDto());
-        return "thesis/thesisRegister";
-    }
-
     @GetMapping("/image/{fileName:.+}")
     @ResponseBody
     public ResponseEntity<Resource> serveImage(@PathVariable String fileName) {

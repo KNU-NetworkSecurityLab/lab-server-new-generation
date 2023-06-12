@@ -23,49 +23,41 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Activity List</h1>
+                <h1 class="mt-4">Activity Register</h1>
 
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-table me-1"></i>
-                        Activity List
+                <form action="thesis.html" th:action th:object="${activity}" method="post" class="needs-validation w-25 mx-auto mt-5"
+                      novalidate enctype="multipart/form-data">
+                    <div>
+                        <label for="title" class="form-label mx-auto">활동명</label>
+                        <input type="text" id="title" th:field="*{title}" class="form-control" placeholder="제목을 입력하세요">
                     </div>
 
-                    <div class="card-body">
-                        <table id="datatablesSimple" class="table table-bordered">
-                            <thead class="table-dark">
-                            <tr class="table-primary">
-                                <th>Image</th>
-                                <th>ID</th>
-                                <th>Title</th>
-                                <th>Date</th>
-                                <th>삭제</th>
-                            </tr>
-                            </thead>
-                            <tbody class="table-light">
-
-                            <div th:each="activity : ${activities}" class="col-md-4">
-                                <tr>
-                                    <td>
-                                        <img th:src="@{'/activity/image/' + ${activity.image.imageName}}" width="100px"
-                                             height="100px">
-                                    <td th:text="${activity.id}"></td>
-                                    <td th:text="${activity.title}"></td>
-                                    <td th:text="${activity.dateString}"></td>
-                                    <td>
-                                        <a th:href="@{/admin/activity/delete/{id}(id=${activity.id})}"
-                                           class="btn btn-danger btn-sm">삭제</a>
-                                    </td>
-                                </tr>
-                            </div>
-                            </tbody>
-                        </table>
+                    <div>
+                        <label for="year" class="form-label mx-auto">연도</label>
+                        <input type="number" id="year" th:field="*{year}" class="form-control" placeholder="년도을 입력하세요">
                     </div>
-                </div>
 
-                <div class="card-footer align-content-end">
-                    <a th:href="@{/admin/activity/add}" class="btn btn-primary btn-sm">활동 추가</a>
-                </div>
+                    <div>
+                        <label for="month" class="form-label mx-auto">월</label>
+                        <input type="number" id="month" th:field="*{month}" class="form-control" placeholder="월을 입력하세요">
+                    </div>
+
+                    <div>
+                        <label for="month" class="form-label mx-auto">일</label>
+                        <input type="number" id="day" th:field="*{day}" class="form-control" placeholder="일을 입력하세요">
+                    </div>
+
+                    <div>
+                        <label>사진</label>
+                        <input type="file" th:id="webImage" th:name="webImage" class="form-control">
+                    </div>
+
+                    <div>
+                        <div class="col">
+                            <button class="w-100 btn btn-primary btn-lg" type="submit">활동 등록</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </main>
         <footer class="py-4 bg-light mt-auto">
