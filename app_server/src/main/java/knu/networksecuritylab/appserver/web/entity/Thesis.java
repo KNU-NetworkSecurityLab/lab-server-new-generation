@@ -96,4 +96,14 @@ public class Thesis {
         }
         return sb.toString();
     }
+
+    public void update(Thesis thesis, WebImage webImage) {
+        this.title = thesis.title;
+        this.year = thesis.year;
+        this.month = thesis.month;
+        this.prizeTitle = thesis.prizeTitle;
+        this.prizeGrade = thesis.prizeGrade;
+        this.organization = thesis.organization;
+        this.image = webImage;
+    }
 }

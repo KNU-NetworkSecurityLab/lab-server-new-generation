@@ -23,45 +23,32 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Thesis List</h1>
+                <h1 class="mt-4">Activity List</h1>
 
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
-                        Thesis List
+                        Activity List
                     </div>
 
                     <div class="card-body">
                         <table id="datatablesSimple" class="table table-bordered">
-                            <thead class="table-light">
+                            <thead class="table-dark">
                             <tr class="table-primary">
                                 <th>ID</th>
                                 <th>Title</th>
-                                <th>Year</th>
-                                <th>Month</th>
-                                <th>PrizeTitle</th>
-                                <th>PrizeGrade</th>
-                                <th>Organization</th>
-                                <th>Author</th>
-                                <th>Contributor</th>
-                                <th>Delete</th>
+                                <th>Date</th>
                             </tr>
                             </thead>
                             <tbody class="table-light">
 
-                            <div th:each="thesis : ${theses}" class="col-md-4">
+                            <div th:each="activity : ${activities}" class="col-md-4">
                                 <tr>
-                                    <td th:text="${thesis.id}"></td>
-                                    <td th:text="${thesis.title}"></td>
-                                    <td th:text="${thesis.year}"></td>
-                                    <td th:text="${thesis.month}"></td>
-                                    <td th:text="${thesis.prizeTitle}"></td>
-                                    <td th:text="${thesis.prizeGrade}"></td>
-                                    <td th:text="${thesis.organization}"></td>
-                                    <td th:text="${thesis.getMembers()}"></td>
-                                    <td th:text="${thesis.getContributors()}"></td>
+                                    <td th:text="${activity.id}"></td>
+                                    <td th:text="${activity.title}"></td>
+                                    <td th:text="${activity.dateString}"></td>
                                     <td>
-                                        <a th:href="@{/admin/thesis/delete/{id}(id=${thesis.id})}"
+                                        <a th:href="@{/admin/activity/delete/{id}(id=${activity.id})}"
                                            class="btn btn-danger btn-sm">삭제</a>
                                     </td>
                                 </tr>
@@ -72,7 +59,7 @@
                 </div>
 
                 <div class="card-footer align-content-end">
-                    <a th:href="@{/admin/thesis/add}" class="btn btn-primary btn-sm">논문 추가</a>
+                    <a th:href="@{/admin/activity/add}" class="btn btn-primary btn-sm">활동 추가</a>
                 </div>
             </div>
         </main>

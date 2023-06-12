@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,4 +60,15 @@ public class BasicThesisService implements ThesisService {
         return thesisRepository.findRecent5Theses(PageRequest.of(0, 5));
     }
 
+    @Override
+    public Thesis getThesis(Long id) {
+        return thesisRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 논문입니다."));
+    }
+
+    @Transactional
+    @Override
+    public void deleteThesis(Long id) {
+        Thesis thesis = thesisRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 논문입니다."));
+        thesisRepository.delete(thesis);
+    }
 }

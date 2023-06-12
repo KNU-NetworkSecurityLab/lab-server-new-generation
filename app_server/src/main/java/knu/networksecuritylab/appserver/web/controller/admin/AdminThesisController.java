@@ -1,6 +1,7 @@
 package knu.networksecuritylab.appserver.web.controller.admin;
 
 import knu.networksecuritylab.appserver.web.entity.Member;
+import knu.networksecuritylab.appserver.web.entity.Thesis;
 import knu.networksecuritylab.appserver.web.entity.dto.ThesisRequestDto;
 import knu.networksecuritylab.appserver.web.service.MemberService;
 import knu.networksecuritylab.appserver.web.service.ThesisService;
@@ -66,5 +67,11 @@ public class AdminThesisController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/delete/{id}")
+    public String thesisDelete(@PathVariable Long id) {
+        thesisService.deleteThesis(id);
+        return "redirect:/admin/thesis";
     }
 }
