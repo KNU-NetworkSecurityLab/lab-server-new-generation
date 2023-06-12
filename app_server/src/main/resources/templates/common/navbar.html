@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<nav id="nav" th:fragment="copy">
+    <div class="logo_div">
+        <a th:href="@{/}"><img th:src="@{/images/logo_black.png}" class="logo_pic"></a>
+    </div>
+    <ul>
+        <li><a href="index.html" th:href="@{/}">HOME</a></li>
+        <li><a href="member.html" th:href="@{/member}">MEMBER</a></li>
+        <li><a href="thesis.html" th:href="@{/thesis}">PUBLICATION</a></li>
+        <li><a href="photo.html" th:href="@{/activity}">PHOTO</a></li>
+        <li><a href="contact.html" th:href="@{/contact}">CONTACT</a></li>
+    </ul>
+</nav>

@@ -3,6 +3,7 @@ package knu.networksecuritylab.appserver.app.config.jwt;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import knu.networksecuritylab.appserver.app.entity.user.UserRole;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +25,7 @@ public class JwtProvider {
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes(StandardCharsets.UTF_8));
     }
 
-    public String createToken(Long id, String studentId, List<String> roles, int tokenExpireHour) {
+    public String createToken(Long id, String studentId, List<UserRole> roles, int tokenExpireHour) {
         Claims claims = Jwts.claims().setSubject(studentId);
         claims.put("id", id);
         claims.put("roles", roles);

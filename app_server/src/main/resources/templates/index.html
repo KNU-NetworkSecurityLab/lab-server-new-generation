@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.png}"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>KNU NetworkSecurityLab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+</head>
+<body>
+<nav id="nav">
+    <div class="logo_div">
+        <img th:src="@{/images/logo.png}" class="logo_pic">
+        <!--        <img src="../static/images/logo.png" class="logo_pic">-->
+    </div>
+    <ul>
+        <li><a href="index.html" th:href="@{/}">HOME</a></li>
+        <li><a href="member.html" th:href="@{/member}">MEMBER</a></li>
+        <li><a href="thesis.html" th:href="@{/thesis}">PUBLICATION</a></li>
+        <!--        <li><a href="Notice.html">NOTICE</a></li>-->
+        <li><a href="photo.html" th:href="@{/activity}">PHOTO</a></li>
+        <!--        <li><a href="History.html">HISTORY</a></li>-->
+        <li><a href="contact.html" th:href="@{/contact}">CONTACT</a></li>
+    </ul>
+</nav>
+
+<div id="contents">
+    <div id="section1">
+        <div class="image_cover"></div>
+        <div class="intro_content">
+            <p>미래를 향한 꿈, 세계를 향한 도전</p>
+            <div class="intro_main">
+                <img th:src="@{/images/lab_logo.png}">
+                <p class="title_text">Network Security Lab</p>
+            </div>
+            <p>네트워크 보안 연구실에 오신 것을 환영합니다</p>
+        </div>
+    </div>
+    <div id="section2">
+        <div class="section2_content">
+            <div class="introduce">
+                <div class="bar"></div>
+                <p class="introduce_lab">
+                    네트워크 보안 연구실 (Network Security Lab.)은 김황래 교수님의 지도 아래, 학생들이 주도적으로 네트워크 및 보안 연구를 진행하는 연구실입니다. 네트워크 및 보안
+                    뿐만 아니라, 알고리즘 및 코딩 스터디는 물론, 웹 프론트엔드 및 백엔드, 모바일 애플리케이션과 언리얼과 같은 게임개발 등 다방면으로 관심이 있는 사람들이 모여 있습니다.
+                    우리 연구실은 연구원들 간의 협력과 자율성을 중요시합니다. 부원들끼리 프로젝트를 진행하고, 매년 연구 주제를 정해 논문을 집필하며, 학회에 출품하여 발표도 진행합니다. 이를 통해
+                    부원들은 직접적으로 연구를 경험하고, 학술적 역량도 증진시킬 수 있습니다.
+                    우리 연구실에서는 기본적인 프로그래밍 언어에 대한 이해와 관심이 있으면 누구나 참여할 수 있으며, 열정을 가진 학생들이 모여 다양한 분야에서 끊임없이 발전하고 있습니다. 네트워크
+                    보안 분야뿐만 아니라, 소프트웨어 분야 전반에 관심이 있는 학생들은 언제든지 연구실 문을 두드려주시기 바랍니다.
+                </p>
+            </div>
+            <div class="notice">
+                <div class="bar"></div>
+                <table>
+                    <div th:each="thesis : ${theses}">
+                        <tr>
+                            <td class="td_type">[논문]</td>
+                            <td class="td_subject"><a th:href="@{/thesis}"
+                                                      th:text="${thesis.title} + ' - ' +${thesis.prizeTitle} + ' ' + ${thesis.prizeGrade}"></a>
+                            </td>
+                            <td class="td_date" th:text="${thesis.getDate()}"></td>
+                        </tr>
+                    </div>
+                </table>
+                <div class="more"><a href="Notice.html" th:href="@{/thesis}">더보기</a></div>
+
+            </div>
+            <div class="photo">
+                <div class="bar"></div>
+                <div class="photo_content">
+                    <ul>
+                        <div th:each="activity : ${activities}">
+                            <li><a>
+                                <figure>
+                                    <img th:if="${activity.image != null}"
+                                         th:src="@{'/thesis/image/' + ${activity.image.imageName}}"
+                                         class="photo_img" width="250px" height="350px">
+                                    <!--                                    <img src="Resource/photo2.jpg" class="photo_img" width="250px" height="350px">-->
+                                    <figcaption>
+                                        <p class="photo_date" th:text="${activity.getDateString()}">
+                                            2023.02.15</p>
+                                        <p class="photo_subject" th:text="${activity.title}">노는게 제일 좋아</p>
+                                    </figcaption>
+                                </figure>
+                            </a></li>
+                        </div>
+                    </ul>
+                </div>
+                <div class="more"><a href="Photo.html" th:href="@{/activity}">더보기</a></div>
+            </div>
+            <div class="recruit">
+                <div class="bar"></div>
+                <div class="recruit_content">
+                    <div class="recruit_text1">
+                        <div>
+                            <p>
+                                <strong>현</strong>재 연구실은 학부생 및 졸업생이 모여 여러 분야의 활동을 이어나가고 있습니다.<br>
+                                구성원들끼리 자유롭게 자신이 하고 싶은 것을 이야기 하며,<br>
+                                함께 성장해 나가며, 하고 싶은 것을 이루는 것을 목표로 합니다.<br>
+                                1년에 1 ~ 2회 정도 학회에 논문을 투고 및 발표하며,<br>
+                                구성원들이 모여 여러 프로젝트를 진행합니다.<br>
+                                코딩 스터디 및 IT 계열의 트렌드에 관한 정보를 공유하기도 합니다.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="recruit_text2">
+                        <p>
+                            함께 하실 분들을 모집합니다!<br>
+                        </p>
+                        <table>
+                            <tr>
+                                <td><strong>랩장</strong>&nbsp;&nbsp;전윤호</td>
+                                <td>|</td>
+                                <td>yoon6763@naver.com</td>
+                            </tr>
+                            <tr>
+                                <td>연구실</td>
+                                <td>|</td>
+                                <td>041 - 521 - 9598</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">공주대학교 천안캠퍼스 8공학관 915호</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div th:insert="~{common/footer :: copy}"></div>
+
+</body>
+
+</html>

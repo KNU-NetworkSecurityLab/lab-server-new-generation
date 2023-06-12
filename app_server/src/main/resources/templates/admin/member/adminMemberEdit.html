@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet"/>
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+<body class="sb-nav-fixed">
+<div th:insert="~{admin/adminNavbar :: copy}"></div>
+
+<div id="layoutSidenav">
+    <div th:insert="~{admin/adminSideNavbar :: adminSideNavbar}"></div>
+
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">Member Edit</h1>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        Member Edit
+                    </div>
+
+                    <form action="adminMemberEdit.html" th:action th:object="${member}" method="post"
+                          class="needs-validation w-25 mx-auto mt-5" novalidate>
+                        <div>
+                            <label for="memberName" class="form-label mx-auto">이름</label>
+                            <input type="text" id="memberName" name="memberName" class="form-control"
+                                   th:field="*{memberName}"
+                                   placeholder="이름을 입력하세요">
+                        </div>
+                        <div>
+                            <label for="email" class="form-label mx-auto">이메일</label>
+                            <input type="text" id="email" name="email" class="form-control"
+                                   th:field="*{email}"
+                                   placeholder="이메일을 입력하세요">
+                        </div>
+
+                        <div>
+                            <label for="major" class="form-label mx-auto">전공</label>
+                            <input type="text" id="major" name="major" class="form-control"
+                                   th:field="*{major}"
+                                   placeholder="전공을 입력하세요">
+                        </div>
+
+                        <div>
+                            <!-- 필수로 하나는 체크되야 함 -->
+                            <label class="form-label mx-auto">멤버 상태</label>
+                            <div th:each="memberState : ${memberStates}">
+                                <input type="radio" th:id="${memberState}" th:name="memberState"
+                                       th:value="${memberState}"
+                                       th:checked="${memberState == member.memberState}"
+                                       class="form-check-input">
+                                <label th:for="${memberState}" class="form-check-label"
+                                       th:text="${memberState.displayName}"></label>
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <div class="col">
+                                <button class="w-100 btn btn-primary btn-lg"
+                                        type="submit">회원 수정
+                                </button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="col">
+                                <!-- 삭제 -->
+                                <button class="w-100 btn btn-danger btn-lg mt-1 mb-1"
+                                        type="button"
+                                        th:method="get"
+                                        th:onclick="|location.href='@{/admin/member/delete/{id}(id=${member.id})}'|"
+                                >회원 삭제
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </main>
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid px-4">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                    <div>
+                        <a href="#">Privacy Policy</a>
+                        &middot;
+                        <a href="#">Terms &amp; Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<script>
+    // 멤버 상태 라디오버튼을 필수로 선택하도록 하는 코드
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.from(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
+</body>
+</html>

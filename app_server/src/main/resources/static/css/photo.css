@@ -1,0 +1,72 @@
+.photo_content ul {
+    display: grid;
+    grid-gap: 2.3rem;
+    justify-items: center; /* 가로 가운데 정렬 */
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.photo_content ul li {
+    background-color: black;
+    width: 250px;
+    height: 350px;
+    display: flex; /* 추가 */
+    align-items: center; /* 추가 */
+    justify-content: center; /* 추가 */
+}
+
+.photo_content ul li a {
+    overflow: hidden;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.photo_content figure {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.photo_content figure figcaption {
+    width: 250px;
+    height: 350px;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    opacity: 0;
+    transition: 0.3s;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo_date {
+    font-size: 15px;
+}
+
+.photo_subject {
+    font-size: 20px;
+}
+
+.photo_content a:hover figcaption,
+.photo_content a:focus figcaption {
+    opacity: 1;
+}
+
+.photo_img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.photo {
+    position: relative;
+    padding-bottom: 100px;
+}
