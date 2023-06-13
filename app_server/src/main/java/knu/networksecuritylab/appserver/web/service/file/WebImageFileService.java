@@ -23,9 +23,9 @@ import java.util.UUID;
 public class WebImageFileService implements WebFileService {
 
     private Path fileLocation;
-    //    private final String STORAGE_PATH = "C:\\Users\\Administrator\\lab-service\\lab_service_image";
+
     @Value("${image.uploadPath}")
-    private final String STORAGE_PATH = "/Users/uknow/lab_service_images";
+    private final String STORAGE_PATH = "C:\\Users\\Administrator\\lab-service\\lab_service_image";
 
     @PostConstruct
     private void init() {

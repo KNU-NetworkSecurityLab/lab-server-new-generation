@@ -43,7 +43,7 @@ public class AdminThesisController {
     }
 
     @PostMapping(value = "/add")
-    public String memberAdd(
+    public String thesisAdd(
             @ModelAttribute ThesisRequestDto thesisRequestDto,
             @RequestParam("webImage") MultipartFile thesisImage
     ) throws Exception {
