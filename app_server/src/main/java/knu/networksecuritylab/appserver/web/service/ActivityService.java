@@ -12,4 +12,6 @@ public interface ActivityService {
     void addActivity(ActivityRequestDto activityRequestDto, MultipartFile multipartFile) throws Exception;
 
     List<Activity> getRecent6Activities();
+
+    void deleteActivity(Long id);
 }

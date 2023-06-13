@@ -42,4 +42,12 @@ public class BasicActivityService implements ActivityService {
     public List<Activity> getRecent6Activities() {
         return activityRepository.findTop6ByOrderByYearDesc(PageRequest.of(0, 6));
     }
+
+
+    @Transactional
+    @Override
+    public void deleteActivity(Long id) {
+        Activity activity = activityRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 활동이 없습니다. id=" + id));
+        activityRepository.delete(activity);
+    }
 }

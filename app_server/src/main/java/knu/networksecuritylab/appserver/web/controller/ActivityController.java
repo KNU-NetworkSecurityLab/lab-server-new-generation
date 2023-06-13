@@ -51,6 +51,12 @@ public class ActivityController {
         return "redirect:/activity";
     }
 
+    @GetMapping("/delete/{id}")
+    public String deleteActivity(@PathVariable Long id) {
+        activityService.deleteActivity(id);
+        return "redirect:/activity";
+    }
+
 
     @GetMapping("/image/{fileName:.+}")
     @ResponseBody
