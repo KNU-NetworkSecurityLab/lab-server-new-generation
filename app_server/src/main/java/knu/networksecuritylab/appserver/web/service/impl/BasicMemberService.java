@@ -22,11 +22,16 @@ public class BasicMemberService implements MemberService {
 
     @Override
     public List<Member> getAllMembers() {
-        return memberRepository.findAll();
+        List<Member> members = memberRepository.findAll();
+        sort(members);
+        return members;
     }
 
     public List<Member> studentList() {
-        return memberRepository.findMemberByMemberStateNot(MemberState.PROFESSOR);
+        List<Member> reader = memberRepository.findMembersByMemberState(MemberState.STUDENT_READER);
+        List<Member> normal = memberRepository.findMembersByMemberState(MemberState.STUDENT_NORMAL);
+        reader.addAll(normal);
+        return reader;
     }
 
     @Override
@@ -57,5 +62,15 @@ public class BasicMemberService implements MemberService {
         Member findMember = memberRepository.findById(id).orElseThrow();
         findMember.update(member);
         memberRepository.save(findMember);
+    }
+
+    private void sort(List<Member> members) {
+        members.sort((o1, o2) -> {
+            if (o1.getMemberState().equals(o2.getMemberState())) {
+                return o1.getId().compareTo(o2.getId());
+            } else {
+                return o1.getMemberState().compareTo(o2.getMemberState());
+            }
+        });
     }
 }

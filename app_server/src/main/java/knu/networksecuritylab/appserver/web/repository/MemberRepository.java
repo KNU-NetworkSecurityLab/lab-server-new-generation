@@ -11,7 +11,9 @@ import java.util.List;
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
+
     Member findMemberByMemberState(MemberState memberState);
 
-    List<Member> findMemberByMemberStateNot(MemberState memberState);
+    List<Member> findMembersByMemberState(MemberState memberState);
+
 }
