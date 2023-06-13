@@ -45,11 +45,17 @@ public class AdminActivityController {
     }
 
     @PostMapping("/add")
-    public String memberAdd(
+    public String activityAdd(
             @ModelAttribute ActivityRequestDto activityRequestDto,
             @RequestParam("webImage") MultipartFile thesisImage
     ) throws Exception {
         activityService.addActivity(activityRequestDto, thesisImage);
+        return "redirect:/admin/activity";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteActivity(@PathVariable Long id) {
+        activityService.deleteActivity(id);
         return "redirect:/admin/activity";
     }
 

@@ -31,7 +31,7 @@ public class Thesis {
     @OneToMany(mappedBy = "thesis", cascade = CascadeType.ALL)
     private List<ThesisContributor> thesisContributors = new ArrayList<>();
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToOne(cascade = {CascadeType.ALL})
     private WebImage image;
 
     @Builder
